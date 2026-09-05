@@ -1,10 +1,10 @@
 import { Component } from '@angular/core'
 import { MatButtonModule } from '@angular/material/button'
 import { MatToolbarModule } from '@angular/material/toolbar'
-import { MatSlideToggleModule } from '@angular/material/slide-toggle'
+import { MatIconModule } from '@angular/material/icon'
 
 @Component({
-  imports: [MatToolbarModule, MatButtonModule, MatSlideToggleModule],
+  imports: [MatToolbarModule, MatButtonModule, MatIconModule],
   selector: 'app-toolbar',
   styleUrl: './toolbar.css',
   templateUrl: './toolbar.html'
@@ -18,9 +18,9 @@ export class Toolbar {
     document.documentElement.classList.toggle('dark-mode', this.isDarkMode)
   }
 
-  toggleDarkMode(enabled: boolean) {
-    this.isDarkMode = enabled
-    document.documentElement.classList.toggle('dark-mode', enabled)
-    localStorage.setItem('theme', enabled ? 'dark' : 'light')
+  toggleDarkMode() {
+    this.isDarkMode = !this.isDarkMode
+    document.documentElement.classList.toggle('dark-mode', this.isDarkMode)
+    localStorage.setItem('theme', this.isDarkMode ? 'dark' : 'light')
   }
 }

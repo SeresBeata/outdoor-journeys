@@ -12,11 +12,14 @@
   <a mat-button>Home</a>
   <a mat-button>Journeys</a>
   <a mat-button>Contact</a>
-  <mat-slide-toggle
-    [checked]="isDarkMode"
-    (change)="toggleDarkMode($event.checked)"
-    aria-label="Toggle dark mode"
+
+  <button
+    mat-icon-button
+    (click)="toggleDarkMode()"
+    [attr.aria-label]="isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'"
   >
-    Dark mode
-  </mat-slide-toggle>
+    <mat-icon>
+      {{ isDarkMode ? 'light_mode' : 'dark_mode' }}
+    </mat-icon>
+  </button>
 </mat-toolbar>
