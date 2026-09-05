@@ -2,10 +2,30 @@
   .example-spacer {
     flex: 1 1 auto;
   }
+
+  .brand-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .big-icon {
+    font-size: 35px;
+    width: 35px;
+    height: 35px;
+  }
 </style>
 
 <mat-toolbar>
-  <span>Outdoor Journeys</span>
+  <div class="brand-container">
+    <mat-icon
+      aria-hidden="false"
+      aria-label="Example home icon"
+      fontIcon="landscape"
+      class="big-icon"
+    ></mat-icon>
+    <span>Outdoor Journeys</span>
+  </div>
 
   <span class="example-spacer"></span>
 
