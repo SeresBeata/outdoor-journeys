@@ -1,2 +1,34 @@
-<app-toolbar></app-toolbar>
-<app-hero></app-hero>
+<style>
+  .root {
+    height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  app-toolbar {
+    flex: 0 0 auto;
+  }
+
+  .container {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    scroll-snap-type: y mandatory;
+    scroll-behavior: smooth;
+  }
+
+  .section-style {
+    height: 100%;
+    scroll-snap-align: start;
+  }
+</style>
+
+<div class="root">
+  <app-toolbar></app-toolbar>
+  <div class="container">
+    <app-hero></app-hero>
+    <section class="section-style">About</section>
+    <section class="section-style">Impressum</section>
+  </div>
+</div>
