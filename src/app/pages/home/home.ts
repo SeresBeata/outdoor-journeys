@@ -47,7 +47,7 @@ export class Home {
 
     if (mountain) {
       mountain.style.transform = `
-      translateY(${scrollY * 0.3}px)
+      translateY(${scrollY * 0.2}px)
       scale(${1 + progress * 0.08})
     `
     }
@@ -60,7 +60,7 @@ export class Home {
 
     if (title) {
       title.style.transform = `
-      translateY(${scrollY * 0.2}px)
+      translateY(${scrollY * 0.5}px)
       scale(${1 - progress * 0.15})
     `
       title.style.opacity = `${1 - progress * 1.2}`
