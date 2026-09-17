@@ -14,6 +14,7 @@
     flex: 1;
     min-height: 0;
     overflow-y: auto;
+    overflow-x: hidden;
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
   }
@@ -26,7 +27,7 @@
 
 <div class="root">
   <app-toolbar></app-toolbar>
-  <div class="container">
+  <div class="container" (scroll)="onScroll($event)">
     <app-hero></app-hero>
     <section class="section-style">About</section>
     <section class="section-style">Impressum</section>
