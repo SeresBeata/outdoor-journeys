@@ -20,36 +20,25 @@
     height: 100%;
     object-fit: cover;
     pointer-events: none;
-    will-change: transform;
-  }
-
-  .sky {
-    z-index: 1;
-  }
-
-  .forest {
-    z-index: 2;
-  }
-
-  .fog {
-    z-index: 3;
+    will-change: transform, opacity;
   }
 
   .hero h1 {
-    position: relative;
-    z-index: 10;
-
+    position: absolute;
+    z-index: 0;
     color: white;
-    font-size: clamp(3rem, 10vw, 100px);
+    text-transform: uppercase;
+    font-size: clamp(3.5rem, 10vw, 500px);
+    will-change: transform, opacity;
+    margin-bottom: 150px;
+    text-shadow: -3px -5px 8px #0e0d0d;
   }
 </style>
 
 <section class="hero section-style">
   <img src="assets/hero/sky.png" class="parallax sky" data-speed="0.1" alt="" />
-
+  <img src="assets/hero/mountain.png" class="parallax mountain" data-speed="0.3" alt="" />
+  <h1>Outdoor</h1>
   <img src="assets/hero/forest.png" class="parallax forest" data-speed="0.3" alt="" />
-
   <img src="assets/hero/fog.png" class="parallax fog" data-speed="0.5" alt="" />
-
-  <h1>Hello World!</h1>
 </section>
