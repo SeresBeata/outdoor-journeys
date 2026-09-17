@@ -3,6 +3,53 @@
     height: 100%;
     scroll-snap-align: start;
   }
+
+  .hero {
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .parallax {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+    will-change: transform;
+  }
+
+  .sky {
+    z-index: 1;
+  }
+
+  .forest {
+    z-index: 2;
+  }
+
+  .fog {
+    z-index: 3;
+  }
+
+  .hero h1 {
+    position: relative;
+    z-index: 10;
+
+    color: white;
+    font-size: clamp(3rem, 10vw, 100px);
+  }
 </style>
 
-<div class="section-style"><p>hero works!</p></div>
+<section class="hero section-style">
+  <img src="assets/hero/sky.png" class="parallax sky" data-speed="0.1" alt="" />
+
+  <img src="assets/hero/forest.png" class="parallax forest" data-speed="0.3" alt="" />
+
+  <img src="assets/hero/fog.png" class="parallax fog" data-speed="0.5" alt="" />
+
+  <h1>Hello World!</h1>
+</section>
