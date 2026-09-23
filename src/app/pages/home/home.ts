@@ -1,9 +1,10 @@
 import { Component } from '@angular/core'
 import { Toolbar } from '../../components/toolbar/toolbar'
 import { Hero } from '../../components/sections/hero/hero'
+import { WeatherAnimation } from '../../components/weather-animation/weather-animation'
 
 @Component({
-  imports: [Toolbar, Hero],
+  imports: [Toolbar, Hero, WeatherAnimation],
   selector: 'app-home',
   styleUrl: './home.css',
   templateUrl: './home.html'
