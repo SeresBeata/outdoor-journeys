@@ -29,8 +29,33 @@
   <app-toolbar></app-toolbar>
   <div class="container" (scroll)="onScroll($event)">
     <app-hero></app-hero>
-    <section class="section-style">About</section>
-    <section class="section-style">Impressum</section>
+    <section class="section-style">
+      About
+      @if (mountains.length > 0) {
+        @for (mountain of mountains; track mountain) {
+          <p>{{ mountain.photographer }}</p>
+          <img src="{{ mountain.src.original }}" style="width: 50px" />
+        }
+      } @else {
+        <p>No Picture</p>
+      }
+    </section>
+    <section class="section-style">
+      Impressum
+      @if (comments.length > 0) {
+        <ul>
+          @for (comment of comments; track comment) {
+            <li>
+              <h3>{{ comment.email }}</h3>
+              <p>{{ comment.name }}</p>
+            </li>
+          }
+        </ul>
+      } @else {
+        <p>No Comments</p>
+      }
+      <button matButton="filled" (click)="postComment()">Post Comment</button>
+    </section>
     <section class="section-style">
       Weather
       <app-weather-animation></app-weather-animation>

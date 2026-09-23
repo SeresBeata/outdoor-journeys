@@ -1,15 +1,112 @@
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { Toolbar } from '../../components/toolbar/toolbar'
+import { MatButtonModule } from '@angular/material/button'
 import { Hero } from '../../components/sections/hero/hero'
 import { WeatherAnimation } from '../../components/weather-animation/weather-animation'
+import { environment } from '../../../environments/environment'
+
+interface Comment {
+  id: number
+  postId: number
+  name: string
+  email: string
+  body: string
+}
+
+interface Src {
+  original: string
+}
+
+interface Photo {
+  alt: string
+  photographer: string
+  photographer_id: number
+  photographer_url: string
+  src: Src
+}
+
+interface Img {
+  page: number
+  next_page: string
+  per_page: number
+  total_results: number
+  photos: Photo[]
+}
 
 @Component({
-  imports: [Toolbar, Hero, WeatherAnimation],
+  imports: [Toolbar, Hero, WeatherAnimation, MatButtonModule],
   selector: 'app-home',
   styleUrl: './home.css',
   templateUrl: './home.html'
 })
-export class Home {
+export class Home implements OnInit {
+  comments: Comment[] = []
+  mountains: Photo[] = []
+
+  ngOnInit() {
+    this.getComments()
+    this.getImg()
+  }
+
+  //get Images
+  async getImg() {
+    const url = environment.pexelsApiUrl
+    const apiKey = environment.pexelsApiKey
+
+    const response = await fetch(url, {
+      headers: { Authorization: apiKey }
+    })
+    if (!response.ok) {
+      throw new Error(`Pexels API error: ${response.status}`)
+    }
+    const data: Img = await response.json()
+    console.log(data.photos)
+    this.mountains = data.photos
+  }
+
+  //post comment
+  async postComment() {
+    const API_URL = environment.jsonplaceholderPostApiUrl
+    const url = `${API_URL}`
+    try {
+      const response = await fetch(url, {
+        method: 'POST',
+        body: JSON.stringify({
+          id: 123,
+          userId: 1234,
+          title: 'title',
+          body: 'body'
+        })
+      })
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`)
+      }
+
+      const res = await response.json()
+      console.log(res)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  // get comments
+  async getComments() {
+    const API_URL = environment.jsonplaceholderCommentApiUrl
+    const url = `${API_URL}?_limit=10`
+
+    try {
+      const response = await fetch(url)
+      if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`)
+      }
+
+      this.comments = await response.json()
+      console.log(this.comments)
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
   onScroll(event: Event) {
     const container = event.target as HTMLElement
     const scrollY = container.scrollTop
