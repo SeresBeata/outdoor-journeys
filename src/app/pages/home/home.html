@@ -10,7 +10,7 @@
     flex: 0 0 auto;
   }
 
-  .container {
+  .container-home {
     flex: 1;
     min-height: 0;
     overflow-y: auto;
@@ -27,7 +27,7 @@
 
 <div class="root">
   <app-toolbar></app-toolbar>
-  <div class="container" (scroll)="onScroll($event)">
+  <div class="container-home" (scroll)="onScroll($event)">
     <app-hero></app-hero>
     <section class="section-style">
       About
@@ -46,8 +46,9 @@
         <ul>
           @for (comment of comments; track comment) {
             <li>
-              <h3>{{ comment.email }}</h3>
-              <p>{{ comment.name }}</p>
+              <h6>
+                {{ comment.email }}: <span>{{ comment.name }}</span>
+              </h6>
             </li>
           }
         </ul>
