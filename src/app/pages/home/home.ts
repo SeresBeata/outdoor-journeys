@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core'
 import { Toolbar } from '../../components/toolbar/toolbar'
 import { MatButtonModule } from '@angular/material/button'
 import { Hero } from '../../components/sections/hero/hero'
+import { About } from '../../components/sections/about/about'
 import { WeatherAnimation } from '../../components/weather-animation/weather-animation'
 import { environment } from '../../../environments/environment'
 
@@ -34,7 +35,7 @@ interface Img {
 }
 
 @Component({
-  imports: [Toolbar, Hero, WeatherAnimation, MatButtonModule],
+  imports: [Toolbar, Hero, WeatherAnimation, MatButtonModule, About],
   selector: 'app-home',
   styleUrl: './home.css',
   templateUrl: './home.html'

@@ -29,8 +29,8 @@
   <app-toolbar></app-toolbar>
   <div class="container-home" (scroll)="onScroll($event)">
     <app-hero></app-hero>
+    <app-about></app-about>
     <section class="section-style">
-      About
       @if (mountains.length > 0) {
         @for (mountain of mountains; track mountain) {
           <p>{{ mountain.photographer }}</p>
