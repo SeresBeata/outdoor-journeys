@@ -139,66 +139,13 @@
 <section class="section-style">
   <div class="container about-wrapper">
     <div class="about-main-section__grid">
-      <div class="about-main-section__grid-item">
-        <h3>Title 1.</h3>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua.
-        </p>
-        <a href="" target="_blank" rel="noreferrer">Link</a>
-      </div>
-      <div class="about-main-section__grid-item">
-        <div>
-          <h3>Title 2.</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua.
-          </p>
-          <a href="" target="_blank" rel="noreferrer">Link</a>
+      @for (item of gridItems; track item; let idx = $index) {
+        <div class="about-main-section__grid-item">
+          <h3>{{ item.title }} {{ idx + 1 }}</h3>
+          <p>{{ item.p }}</p>
+          <a href="{{ item.link }}" target="_blank" rel="noreferrer">{{ item.link }}</a>
         </div>
-        <div>
-          <a href="" target="_blank" rel="noreferrer">Link</a>
-        </div>
-      </div>
-      <div class="about-main-section__grid-item">
-        <div>
-          <h3>Title 3.</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua.
-          </p>
-          <a href="" target="_blank" rel="noreferrer">Link</a>
-          <div>
-            <a href="" target="_blank" rel="noreferrer">Link</a>
-          </div>
-        </div>
-      </div>
-      <div class="about-main-section__grid-item">
-        <div>
-          <h3>Title 4.</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua.
-          </p>
-          <a href="" target="_blank" rel="noreferrer">Link</a>
-        </div>
-        <div>
-          <a href="" target="_blank" rel="noreferrer">Link</a>
-        </div>
-      </div>
-      <div class="about-main-section__grid-item">
-        <div>
-          <h3>Title 5.</h3>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua.
-          </p>
-          <a href="" target="_blank" rel="noreferrer">Link</a>
-        </div>
-        <div>
-          <a href="" target="_blank" rel="noreferrer">Link</a>
-        </div>
-      </div>
+      }
     </div>
   </div>
 </section>

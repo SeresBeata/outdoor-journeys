@@ -6,4 +6,32 @@ import { Component } from '@angular/core'
   styleUrl: './about.css',
   templateUrl: './about.html'
 })
-export class About {}
+export class About {
+  gridItems = [
+    {
+      title: 'Title',
+      p: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      link: 'Link'
+    },
+    {
+      title: 'Title',
+      p: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      link: 'Link'
+    },
+    {
+      title: 'Title',
+      p: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      link: 'Link'
+    },
+    {
+      title: 'Title',
+      p: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      link: 'Link'
+    },
+    {
+      title: 'Title',
+      p: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      link: 'Link'
+    }
+  ]
+}
