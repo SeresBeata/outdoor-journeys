@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button'
 import { Hero } from '../../components/sections/hero/hero'
 import { About } from '../../components/sections/about/about'
 import { WeatherAnimation } from '../../components/weather-animation/weather-animation'
+import { CarouselSection } from '../../components/sections/carousel-section/carousel-section'
 import { environment } from '../../../environments/environment'
 
 interface Comment {
@@ -35,7 +36,7 @@ interface Img {
 }
 
 @Component({
-  imports: [Toolbar, Hero, WeatherAnimation, MatButtonModule, About],
+  imports: [Toolbar, Hero, WeatherAnimation, MatButtonModule, About, CarouselSection],
   selector: 'app-home',
   styleUrl: './home.css',
   templateUrl: './home.html'
