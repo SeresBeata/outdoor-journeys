@@ -17,6 +17,6 @@
     <p>{{ mountain.photographer }}</p>
     <img [src]="mountain.src.original" [alt]="mountain.alt" style="width: 50px" />
   } @empty {
-    <li>There are no items.</li>
+    <span class="loader"></span>
   }
 </div>
