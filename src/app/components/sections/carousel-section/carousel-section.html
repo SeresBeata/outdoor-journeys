@@ -1,1 +1,19 @@
-<p>carousel-section works!</p>
+<style>
+  .section-style {
+    height: 100%;
+    scroll-snap-align: start;
+  }
+
+  .carousel-wrapper {
+    height: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+  }
+</style>
+
+<section class="section-style">
+  <div class="carousel-wrapper">
+    <app-carousel></app-carousel>
+  </div>
+</section>
