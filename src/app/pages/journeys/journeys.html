@@ -9,6 +9,13 @@
   app-toolbar {
     flex: 0 0 auto;
   }
+
+  .truncated-text {
+    white-space: nowrap;
+    width: 50%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 </style>
 
 <div>
@@ -47,7 +54,9 @@
         <th mat-header-cell *matHeaderCellDef>Link</th>
 
         <td mat-cell *matCellDef="let mountain">
-          {{ mountain.photographer_url }}
+          <div class="truncated-text">
+            <a href="{{ mountain.photographer_url }}"> {{ mountain.photographer_url }} </a>
+          </div>
         </td>
       </ng-container>
 
