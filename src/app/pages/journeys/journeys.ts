@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, signal } from '@angular/core'
+import { Component, OnInit, signal } from '@angular/core'
 import { Toolbar } from '../../components/toolbar/toolbar'
 import { MatTableModule } from '@angular/material/table'
 import { MatPaginatorModule } from '@angular/material/paginator'
@@ -33,21 +33,19 @@ interface Img {
   styleUrl: './journeys.css',
   templateUrl: './journeys.html'
 })
-export class Journeys implements OnInit, AfterViewInit {
+export class Journeys implements OnInit {
   mountains = signal<Photo[]>([])
   dataSource = new MatTableDataSource<Photo>([])
   displayedColumns = ['image', 'alt']
   apiPageSize = signal(20)
 
   @ViewChild(MatPaginator)
-  paginator!: MatPaginator
+  set paginator(paginator: MatPaginator) {
+    this.dataSource.paginator = paginator
+  }
 
   ngOnInit() {
     this.getImg()
-  }
-
-  ngAfterViewInit() {
-    this.dataSource.paginator = this.paginator
   }
 
   //get Images
