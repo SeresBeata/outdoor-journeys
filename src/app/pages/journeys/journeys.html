@@ -13,4 +13,10 @@
 
 <div class="root">
   <app-toolbar></app-toolbar>
+  @for (mountain of mountains(); track mountain.src) {
+    <p>{{ mountain.photographer }}</p>
+    <img [src]="mountain.src.original" [alt]="mountain.alt" style="width: 50px" />
+  } @empty {
+    <li>There are no items.</li>
+  }
 </div>
