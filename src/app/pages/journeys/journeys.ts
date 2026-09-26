@@ -9,6 +9,7 @@ import { environment } from '../../../environments/environment'
 
 interface Src {
   original: string
+  tiny: string
 }
 
 interface Photo {
