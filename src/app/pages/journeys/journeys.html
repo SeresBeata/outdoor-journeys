@@ -11,12 +11,37 @@
   }
 </style>
 
-<div class="root">
+<div>
   <app-toolbar></app-toolbar>
-  @for (mountain of mountains(); track mountain.src) {
-    <p>{{ mountain.photographer }}</p>
-    <img [src]="mountain.src.original" [alt]="mountain.alt" style="width: 50px" />
-  } @empty {
+
+  @if (mountains().length > 0) {
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- Image -->
+      <ng-container matColumnDef="image">
+        <th mat-header-cell *matHeaderCellDef>Image</th>
+
+        <td mat-cell *matCellDef="let mountain">
+          <img [src]="mountain.src.original" [alt]="mountain.alt" width="100" />
+        </td>
+      </ng-container>
+
+      <!-- Alt text -->
+      <ng-container matColumnDef="alt">
+        <th mat-header-cell *matHeaderCellDef>Description</th>
+
+        <td mat-cell *matCellDef="let mountain">
+          {{ mountain.alt }}
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+  } @else {
     <span class="loader"></span>
   }
+
+  <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+  </mat-paginator>
 </div>
