@@ -52,7 +52,7 @@ export class Home implements OnInit {
 
   //get Images
   async getImg() {
-    const url = environment.pexelsApiUrl
+    const url = `${environment.pexelsApiUrl}&per_page=5`
     const apiKey = environment.pexelsApiKey
 
     const response = await fetch(url, {
