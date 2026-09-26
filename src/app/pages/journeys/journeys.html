@@ -1,9 +1,9 @@
 <style>
-  .root {
-    height: 100dvh;
+  .loader-container {
+    height: 100vh;
     display: flex;
-    flex-direction: column;
-    overflow: hidden;
+    justify-content: center;
+    align-items: center;
   }
 
   app-toolbar {
@@ -42,6 +42,8 @@
     <mat-paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
     </mat-paginator>
   } @else {
-    <span class="loader"></span>
+    <div class="loader-container">
+      <span class="loader"></span>
+    </div>
   }
 </div>
