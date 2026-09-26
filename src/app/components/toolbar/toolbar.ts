@@ -2,6 +2,7 @@ import { Component } from '@angular/core'
 import { MatButtonModule } from '@angular/material/button'
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatIconModule } from '@angular/material/icon'
+import { environment } from '../../../environments/environment'
 
 @Component({
   imports: [MatToolbarModule, MatButtonModule, MatIconModule],
@@ -10,6 +11,9 @@ import { MatIconModule } from '@angular/material/icon'
   templateUrl: './toolbar.html'
 })
 export class Toolbar {
+  navHome = environment.navHome
+  navJourneys = environment.navJourneys
+
   isDarkMode = false
 
   constructor() {
