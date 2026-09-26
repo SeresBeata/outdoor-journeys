@@ -1,1 +1,81 @@
-<p>carousel works!</p>
+<style>
+  .wrapper {
+    width: 900px;
+    height: 500px;
+  }
+
+  @media all and (max-width: 1200px) {
+    .wrapper {
+      width: 900px;
+      height: 500px;
+    }
+
+    .my-img {
+      width: 900px;
+      height: 500px;
+    }
+  }
+
+  @media all and (max-width: 992px) {
+    .wrapper {
+      width: 700px;
+      height: 500px;
+    }
+
+    .my-img {
+      width: 700px;
+      height: 500px;
+    }
+  }
+
+  @media all and (max-width: 768px) {
+    .wrapper {
+      width: 600px;
+      height: 500px;
+    }
+
+    .my-img {
+      width: 600px;
+      height: 500px;
+    }
+  }
+
+  @media all and (max-width: 480px) {
+    .wrapper {
+      width: 370px;
+      height: 200px;
+    }
+
+    .my-img {
+      width: 370px;
+      height: 200px;
+    }
+  }
+
+  @media all and (max-width: 360px) {
+    .wrapper {
+      width: 340px;
+      height: 200px;
+    }
+
+    .my-img {
+      width: 340px;
+      height: 200px;
+    }
+  }
+</style>
+
+<ngb-carousel class="wrapper">
+  @for (img of images; track img; let i = $index) {
+    <ng-template ngbSlide>
+      <div class="carousel-caption">
+        <h3>My slide {{ i + 1 }} title</h3>
+      </div>
+      <a href=" {{ img.link }} " target="_blank" rel="nofollow noopener noreferrer">
+        <div class="picsum-img-wrapper">
+          <img [src]="img.src" alt="My image {{ i + 1 }} description" class="my-img" />
+        </div>
+      </a>
+    </ng-template>
+  }
+</ngb-carousel>
