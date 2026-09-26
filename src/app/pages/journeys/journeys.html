@@ -13,7 +13,6 @@
 
 <div>
   <app-toolbar></app-toolbar>
-
   @if (mountains().length > 0) {
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
       <!-- Image -->
@@ -31,6 +30,15 @@
 
         <td mat-cell *matCellDef="let mountain">
           {{ mountain.alt }}
+        </td>
+      </ng-container>
+
+      <!-- Photographer -->
+      <ng-container matColumnDef="photographer">
+        <th mat-header-cell *matHeaderCellDef>Photographer</th>
+
+        <td mat-cell *matCellDef="let mountain">
+          {{ mountain.photographer }}
         </td>
       </ng-container>
 

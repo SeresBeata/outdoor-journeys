@@ -37,7 +37,7 @@ interface Img {
 export class Journeys implements OnInit {
   mountains = signal<Photo[]>([])
   dataSource = new MatTableDataSource<Photo>([])
-  displayedColumns = ['image', 'alt']
+  displayedColumns = ['image', 'alt', 'photographer']
   apiPageSize = signal(20)
 
   @ViewChild(MatPaginator)
