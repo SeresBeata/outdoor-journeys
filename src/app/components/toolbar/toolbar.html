@@ -19,6 +19,40 @@
     background-color: var(--mat-sys-primary-container);
     color: var(--mat-sys-on-primary-container);
   }
+
+  .toolbar-dropdown-wrapper {
+    display: none;
+  }
+
+  .toolbar-dropdown-menu {
+    background-color: var(--mat-sys-surface);
+    border-color: var(--mat-sys-on-primary-container);
+  }
+
+  .toolbar-dropdown-menu-item:hover {
+    background-color: var(--mat-sys-primary-container);
+  }
+
+  .toolbar-dropdown-a {
+    color: var(--mat-sys-on-surface);
+    text-decoration: none;
+  }
+
+  .toolbar-dropdown-darkmode-btn {
+    display: flex;
+    align-items: center;
+  }
+
+  @media all and (max-width: 768px) {
+    .toolbar-text,
+    .toolbar-nav-btn {
+      display: none;
+    }
+
+    .toolbar-dropdown-wrapper {
+      display: inline-block;
+    }
+  }
 </style>
 
 <mat-toolbar class="toolbar">
@@ -29,16 +63,17 @@
       fontIcon="landscape"
       class="big-icon"
     ></mat-icon>
-    <span>Outdoor Journeys</span>
+    <span class="toolbar-text">Outdoor Journeys</span>
   </div>
 
   <span class="example-spacer"></span>
 
-  <a mat-button href="{{ navHome }}">Home</a>
-  <a mat-button href="{{ navJourneys }}">Journeys</a>
-  <a mat-button>Contact</a>
+  <a mat-button href="{{ navHome }}" class="toolbar-nav-btn">Home</a>
+  <a mat-button href="{{ navJourneys }}" class="toolbar-nav-btn">Journeys</a>
+  <a mat-button href="" class="toolbar-nav-btn">Contact</a>
 
   <button
+    class="toolbar-nav-btn"
     mat-icon-button
     (click)="toggleDarkMode()"
     [attr.aria-label]="isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'"
@@ -47,4 +82,31 @@
       {{ isDarkMode ? 'light_mode' : 'dark_mode' }}
     </mat-icon>
   </button>
+
+  <div ngbDropdown class="toolbar-dropdown-wrapper">
+    <button mat-button type="button" class="btn" id="togleBtnOfdropdownNav" ngbDropdownToggle>
+      Menu
+    </button>
+    <div ngbDropdownMenu aria-labelledby="dropdownOfNav" class="toolbar-dropdown-menu">
+      <button ngbDropdownItem class="toolbar-dropdown-menu-item">
+        <a href="{{ navHome }}" class="toolbar-dropdown-a">Home</a>
+      </button>
+      <button ngbDropdownItem class="toolbar-dropdown-menu-item">
+        <a href="{{ navJourneys }}" class="toolbar-dropdown-a">Journeys</a>
+      </button>
+      <button ngbDropdownItem class="toolbar-dropdown-menu-item">
+        <a href="" class="toolbar-dropdown-a">Contact</a>
+      </button>
+      <button
+        ngbDropdownItem
+        class="toolbar-dropdown-menu-item toolbar-dropdown-darkmode-btn"
+        (click)="toggleDarkMode()"
+        [attr.aria-label]="isDarkMode ? 'Switch to light mode' : 'Switch to dark mode'"
+      >
+        <mat-icon class="toolbar-dropdown-a">
+          {{ isDarkMode ? 'light_mode' : 'dark_mode' }}
+        </mat-icon>
+      </button>
+    </div>
+  </div>
 </mat-toolbar>

@@ -2,10 +2,26 @@ import { Component } from '@angular/core'
 import { MatButtonModule } from '@angular/material/button'
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatIconModule } from '@angular/material/icon'
+import {
+  NgbDropdown,
+  NgbDropdownToggle,
+  NgbDropdownMenu,
+  NgbDropdownItem,
+  NgbDropdownButtonItem
+} from '@ng-bootstrap/ng-bootstrap/dropdown'
 import { environment } from '../../../environments/environment'
 
 @Component({
-  imports: [MatToolbarModule, MatButtonModule, MatIconModule],
+  imports: [
+    MatToolbarModule,
+    MatButtonModule,
+    MatIconModule,
+    NgbDropdown,
+    NgbDropdownToggle,
+    NgbDropdownMenu,
+    NgbDropdownItem,
+    NgbDropdownButtonItem
+  ],
   selector: 'app-toolbar',
   styleUrl: './toolbar.css',
   templateUrl: './toolbar.html'
