@@ -69,7 +69,7 @@ export class Journeys implements OnInit {
 
   //get Images
   async getImg() {
-    const url = `${environment.pexelsApiUrl}&per_page=${this.apiPageSize()}`
+    const url = `${environment.pexelsApiUrl}&per_page=${this.apiPageSize()}&orientation=landscape`
     const apiKey = environment.pexelsApiKey
 
     const response = await fetch(url, {
