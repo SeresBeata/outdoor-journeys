@@ -92,6 +92,131 @@
   .example-toggle-button-expanded {
     transform: rotate(180deg);
   }
+
+  .expanded-card-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  .card {
+    display: grid;
+    grid-template-columns: 40% 60%;
+    max-width: 900px;
+    min-height: 320px;
+    margin: 0 auto;
+    background-color: var(--mat-sys-primary-container);
+    color: var(--mat-sys-on-surface);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  }
+
+  .card__image {
+    position: relative;
+    overflow: hidden;
+    min-height: 320px;
+  }
+
+  .card__image img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .card__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 40px;
+  }
+
+  .card__avatar-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .card__avatar {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  .card__title {
+    margin: 0 0 12px;
+    font-size: 28px;
+    line-height: 1.2;
+  }
+
+  .card__description {
+    margin: 0;
+    max-width: 500px;
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  .card__button {
+    display: inline-block;
+    margin-top: auto;
+    padding: 12px 22px;
+    border-radius: 8px;
+    background: #111827;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    transition:
+      background 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .card__button:hover {
+    background: #374151;
+    transform: translateY(-1px);
+  }
+
+  @media (max-width: 700px) {
+    .card {
+      grid-template-columns: 45% 55%;
+    }
+
+    .card__content {
+      padding: 28px;
+    }
+
+    .card__title {
+      font-size: 24px;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .card {
+      grid-template-columns: 1fr;
+    }
+
+    .card__image {
+      min-height: 220px;
+      max-height: 280px;
+    }
+
+    .card__content {
+      padding: 28px;
+    }
+
+    .card__button {
+      margin-top: 28px;
+    }
+  }
 </style>
 
 <div>
@@ -141,17 +266,26 @@
               [class.example-element-detail-wrapper-expanded]="isExpanded(element)"
             >
               <div class="example-element-detail">
-                <img [src]="element.src.medium" [alt]="element.alt" />
+                <div class="expanded-card-wrapper">
+                  <article class="card">
+                    <div class="card__image">
+                      <img [src]="element.src.medium" [alt]="element.alt" />
+                    </div>
 
-                <div class="example-element-diagram">
-                  <div class="example-element-position">{{ element.alt }}</div>
-                  <div class="example-element-symbol">{{ element.symbol }}</div>
-                  <div class="example-element-name">{{ element.name }}</div>
-                  <div class="example-element-weight">{{ element.weight }}</div>
-                </div>
-                <div class="example-element-description">
-                  {{ element.description }}
-                  <span class="example-element-description-attribution"> -- Wikipedia </span>
+                    <div class="card__content">
+                      <div class="card__avatar-wrapper">
+                        <div class="card__avatar" [style.background-color]="element.avg_color">
+                          {{ element.photographer.charAt(0) }}
+                        </div>
+                      </div>
+
+                      <h2 class="card__title">{{ element.photographer }}</h2>
+
+                      <p class="card__description">{{ element.alt }}</p>
+
+                      <a [href]="element.photographer_url" class="card__button"> Read more </a>
+                    </div>
+                  </article>
                 </div>
               </div>
             </div>
