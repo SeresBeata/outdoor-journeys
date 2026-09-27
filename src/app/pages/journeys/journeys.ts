@@ -21,6 +21,8 @@ interface Photo {
   photographer: string
   photographer_id: number
   photographer_url: string
+  url: string
+  avg_color: string
   src: Src
 }
 
