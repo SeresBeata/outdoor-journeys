@@ -6,10 +6,14 @@ import { MatTableDataSource } from '@angular/material/table'
 import { MatPaginator } from '@angular/material/paginator'
 import { ViewChild } from '@angular/core'
 import { environment } from '../../../environments/environment'
+import { MatIconModule } from '@angular/material/icon'
+import { MatButtonModule } from '@angular/material/button'
 
 interface Src {
   original: string
   tiny: string
+  small: string
+  medium: string
 }
 
 interface Photo {
@@ -29,7 +33,7 @@ interface Img {
 }
 
 @Component({
-  imports: [Toolbar, MatTableModule, MatPaginatorModule],
+  imports: [Toolbar, MatTableModule, MatPaginatorModule, MatButtonModule, MatIconModule],
   selector: 'app-journeys',
   styleUrl: './journeys.css',
   templateUrl: './journeys.html'
@@ -37,8 +41,20 @@ interface Img {
 export class Journeys implements OnInit {
   mountains = signal<Photo[]>([])
   dataSource = new MatTableDataSource<Photo>([])
-  displayedColumns = ['image', 'alt', 'photographer', 'photographer_url']
+  columnsToDisplay = ['image', 'photographer', 'photographer_url']
+  columnsToDisplayWithExpand = [...this.columnsToDisplay, 'expand']
+  expandedElement: Photo[] | null = null
   apiPageSize = signal(20)
+
+  //Check if element is expanded
+  isExpanded(element: Photo[]) {
+    return this.expandedElement === element
+  }
+
+  // Toggle expanded element
+  toggle(element: Photo[]) {
+    this.expandedElement = this.isExpanded(element) ? null : element
+  }
 
   @ViewChild(MatPaginator)
   set paginator(paginator: MatPaginator) {
