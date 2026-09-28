@@ -140,11 +140,20 @@
     max-width: 500px;
     font-size: 16px;
     line-height: 1.6;
+    font-style: italic;
+  }
+
+  .card__description::before {
+    content: '“';
+  }
+
+  .card__description::after {
+    content: '”';
   }
 
   .card__button {
     display: inline-block;
-    margin-top: auto;
+    margin-top: 30px;
     padding: 12px 22px;
     border-radius: 8px;
     background: #111827;
@@ -192,6 +201,10 @@
 
     .card__button {
       margin-top: 28px;
+    }
+
+    .mat-column-photographer_url {
+      display: none;
     }
   }
 </style>
