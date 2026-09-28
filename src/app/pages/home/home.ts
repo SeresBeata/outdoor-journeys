@@ -154,6 +154,7 @@ export class Home implements OnInit {
 
     if (fog) {
       fog.style.transform = `
+      translateY(${scrollY * 0.8}px)
       scale(${1 + progress * 0.12})
     `
     }
