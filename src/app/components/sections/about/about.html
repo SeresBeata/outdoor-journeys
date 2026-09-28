@@ -24,8 +24,12 @@
       border-radius: 5px;
     }
 
-    .about-main-section__grid-item h3 {
-      color: var(--mat-sys-on-primary-container);
+    .about-main-section__grid-item-wrapper {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      height: 100%;
     }
 
     .about-main-section__grid-item {
@@ -49,7 +53,7 @@
       border-bottom-right-radius: 5px;
       background-repeat: no-repeat;
       background-size: cover;
-      background-image: url('/assets/hero/mountain.png');
+      min-height: 200px;
     }
 
     .about-main-section__grid-item:nth-of-type(4) {
@@ -84,7 +88,6 @@
         grid-column: span 2;
         grid-row: 2 /3;
         border-radius: 0;
-        background-image: url('/assets/hero/forest.png');
       }
 
       .about-main-section__grid-item:nth-of-type(4) {
@@ -139,11 +142,18 @@
 <section class="section-style">
   <div class="container about-wrapper">
     <div class="about-main-section__grid">
-      @for (item of gridItems; track item; let idx = $index) {
-        <div class="about-main-section__grid-item">
-          <h3>{{ item.title }} {{ idx + 1 }}</h3>
-          <p>{{ item.p }}</p>
-          <a href="{{ item.link }}" target="_blank" rel="noreferrer">{{ item.link }}</a>
+      @for (item of gridItems; track item) {
+        <div
+          class="about-main-section__grid-item"
+          [style.background-image]="'url(' + item.imgUrl + ')'"
+        >
+          <div class="about-main-section__grid-item-wrapper">
+            <h3>{{ item.title }}</h3>
+            <p>{{ item.p }}</p>
+            @if (item.link) {
+              <a matButton="tonal" href="{{ item.link }}">{{ item.linkText }}</a>
+            }
+          </div>
         </div>
       }
     </div>
