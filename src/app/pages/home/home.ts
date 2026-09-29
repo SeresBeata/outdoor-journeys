@@ -1,112 +1,92 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit, signal } from '@angular/core'
+import { MatProgressBarModule } from '@angular/material/progress-bar'
+import { MatCardModule } from '@angular/material/card'
+import { MatChipsModule } from '@angular/material/chips'
 import { Toolbar } from '../../components/toolbar/toolbar'
-import { MatButtonModule } from '@angular/material/button'
 import { Hero } from '../../components/sections/hero/hero'
 import { About } from '../../components/sections/about/about'
 import { WeatherAnimation } from '../../components/weather-animation/weather-animation'
 import { CarouselSection } from '../../components/sections/carousel-section/carousel-section'
 import { environment } from '../../../environments/environment'
 
-interface Comment {
-  id: number
-  postId: number
-  name: string
-  email: string
+interface Post {
+  title: string
+  username: string
+  firstName: string
+  lastName: string
   body: string
 }
 
-interface Src {
-  original: string
+interface Posts {
+  title: string
+  body: string
+  userId: string
 }
 
-interface Photo {
-  alt: string
-  photographer: string
-  photographer_id: number
-  photographer_url: string
-  src: Src
-}
-
-interface Img {
-  page: number
-  next_page: string
-  per_page: number
-  total_results: number
-  photos: Photo[]
+interface Users {
+  username: string
+  id: string
+  firstName: string
+  lastName: string
 }
 
 @Component({
-  imports: [Toolbar, Hero, WeatherAnimation, MatButtonModule, About, CarouselSection],
+  imports: [
+    Toolbar,
+    Hero,
+    WeatherAnimation,
+    About,
+    CarouselSection,
+    MatCardModule,
+    MatChipsModule,
+    MatProgressBarModule
+  ],
   selector: 'app-home',
   styleUrl: './home.css',
   templateUrl: './home.html'
 })
 export class Home implements OnInit {
-  comments: Comment[] = []
-  mountains: Photo[] = []
+  posts = signal<Post[]>([])
 
   ngOnInit() {
-    this.getComments()
-    this.getImg()
+    this.getPosts()
   }
 
-  //get Images
-  async getImg() {
-    const url = `${environment.pexelsApiUrl}&per_page=5`
-    const apiKey = environment.pexelsApiKey
+  // get posts
+  async getPosts() {
+    const urlPosts = `${environment.postsApiUrl}/search?q=nature&limit=10`
+    const urlUsers = environment.usersApiUrl
 
-    const response = await fetch(url, {
-      headers: { Authorization: apiKey }
-    })
-    if (!response.ok) {
-      throw new Error(`Pexels API error: ${response.status}`)
-    }
-    const data: Img = await response.json()
-    console.log(data.photos)
-    this.mountains = data.photos
+    const [postsResponse, usersResponse] = await Promise.all([fetch(urlPosts), fetch(urlUsers)])
+
+    const postsData = await postsResponse.json()
+    const usersData = await usersResponse.json()
+
+    console.log('postsData', postsData)
+    console.log('userData', usersData)
+
+    const postsWithUsers = this.combinePostsAndUsers(postsData.posts, usersData.users)
+
+    this.posts.set(postsWithUsers)
+    console.log('POSTS SIGNAL:', this.posts())
   }
 
-  //post comment
-  async postComment() {
-    const API_URL = environment.jsonplaceholderPostApiUrl
-    const url = `${API_URL}`
-    try {
-      const response = await fetch(url, {
-        method: 'POST',
-        body: JSON.stringify({
-          id: 123,
-          userId: 1234,
-          title: 'title',
-          body: 'body'
-        })
+  combinePostsAndUsers(posts: Posts[], users: Users[]): Post[] {
+    const usersById = new Map(users.map((user) => [user.id, user]))
+
+    return posts
+      .map((post) => {
+        const user = usersById.get(post.userId)
+
+        return {
+          ...post,
+          firstName: user?.firstName ?? 'Unknown First Name',
+          lastName: user?.lastName ?? 'Unknown Last Name',
+          username: user?.username ?? 'Unknown user'
+        }
       })
-      if (!response.ok) {
-        throw new Error(`Response status: ${response.status}`)
-      }
-
-      const res = await response.json()
-      console.log(res)
-    } catch (error) {
-      console.error(error)
-    }
-  }
-
-  // get comments
-  async getComments() {
-    const API_URL = environment.jsonplaceholderCommentApiUrl
-    const url = `${API_URL}?_limit=10`
-
-    try {
-      const response = await fetch(url)
-      if (!response.ok) {
-        throw new Error(`Response status: ${response.status}`)
-      }
-
-      this.comments = await response.json()
-      console.log(this.comments)
-    } catch (error) {
-      console.error(error)
-    }
+      .filter((post) => post.username !== 'Unknown user')
+      .slice(0, 3)
   }
 
   onScroll(event: Event) {
