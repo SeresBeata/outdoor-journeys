@@ -1,1 +1,99 @@
-<p>reviews works!</p>
+<style>
+  .section-style {
+    height: 100%;
+    scroll-snap-align: start;
+  }
+
+  .review-card {
+    margin: 5px;
+    max-width: 400px;
+    min-height: 330px;
+  }
+
+  .review-card-footer {
+    padding: 16px;
+  }
+
+  .cards-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .card__avatar-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .card__avatar {
+    width: 52px;
+    height: 52px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    border-radius: 50%;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: var(--mat-sys-primary-container);
+    text-transform: uppercase;
+  }
+
+  .card-content-body {
+    font-style: italic;
+  }
+
+  .card-content-body::before {
+    content: '“';
+  }
+
+  .card-content-body::after {
+    content: '”';
+  }
+
+  @media all and (max-width: 1250px) {
+    .cards-wrapper {
+      flex-direction: column;
+    }
+
+    .review-card {
+      max-width: 100%;
+      max-height: 260px;
+      min-height: 100px;
+    }
+  }
+</style>
+
+<section class="section-style">
+  <div class="cards-wrapper">
+    @for (post of posts(); track post) {
+      <mat-card class="review-card" appearance="outlined">
+        <mat-card-header>
+          <div class="card__avatar-wrapper">
+            <div class="card__avatar">
+              <mat-icon aria-hidden="false" aria-label="Person icon" fontIcon="person"></mat-icon>
+            </div>
+          </div>
+        </mat-card-header>
+        <mat-card-content>
+          <p class="card-content-body">{{ post.body }}</p>
+          <span>{{ post.firstName + ' ' + post.lastName }}</span>
+        </mat-card-content>
+        <mat-card-footer class="review-card-footer">
+          <mat-chip-set aria-label="Tags of comments">
+            @if (post.tags && post.tags?.length > 0) {
+              @for (tag of post.tags; track tag) {
+                <mat-chip class="card-chip">{{ tag }}</mat-chip>
+              }
+            }
+          </mat-chip-set>
+        </mat-card-footer>
+      </mat-card>
+    } @empty {
+      <div>No Comments</div>
+    }
+  </div>
+</section>
