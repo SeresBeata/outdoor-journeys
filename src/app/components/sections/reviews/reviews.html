@@ -5,7 +5,7 @@
   }
 
   .review-card {
-    margin: 5px;
+    margin: 10px;
     max-width: 400px;
     min-height: 330px;
   }
@@ -54,6 +54,10 @@
     content: '”';
   }
 
+  .card-user::before {
+    content: '~';
+  }
+
   @media all and (max-width: 1250px) {
     .cards-wrapper {
       flex-direction: column;
@@ -65,10 +69,50 @@
       min-height: 100px;
     }
   }
+
+  @media (max-height: 992px) and (max-width: 1249px) {
+    .mat-card-footer {
+      padding-top: 0px;
+      padding-bottom: 0px;
+    }
+
+    .mat-mdc-standard-chip {
+      height: 20px;
+    }
+
+    .card__avatar {
+      width: 30px;
+      height: 30px;
+    }
+
+    p {
+      font-size: x-small;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .review-card-footer {
+      padding-top: 0px;
+      padding-bottom: 0px;
+    }
+  }
+
+  @media (max-height: 670px) {
+    p {
+      font-size: x-small;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .review-card-footer {
+      padding-top: 0px;
+      padding-bottom: 0px;
+    }
+  }
 </style>
 
 <section class="section-style">
-  <div class="cards-wrapper">
+  <div class="container cards-wrapper">
     @for (post of posts(); track post) {
       <mat-card class="review-card" appearance="outlined">
         <mat-card-header>
@@ -80,13 +124,13 @@
         </mat-card-header>
         <mat-card-content>
           <p class="card-content-body">{{ post.body }}</p>
-          <span>{{ post.firstName + ' ' + post.lastName }}</span>
+          <span class="card-user">{{ post.firstName + ' ' + post.lastName }}</span>
         </mat-card-content>
         <mat-card-footer class="review-card-footer">
           <mat-chip-set aria-label="Tags of comments">
             @if (post.tags && post.tags?.length > 0) {
               @for (tag of post.tags; track tag) {
-                <mat-chip class="card-chip">{{ tag }}</mat-chip>
+                <mat-chip>{{ tag }}</mat-chip>
               }
             }
           </mat-chip-set>
