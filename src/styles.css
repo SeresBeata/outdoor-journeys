@@ -6,3 +6,17 @@
   background-color: var(--mat-sys-primary-container);
   border-radius: 50%;
 }
+
+@media (max-height: 992px) and (max-width: 1000px) {
+  /* Chip */
+  .mdc-evolution-chip__text-label {
+    font-size: 10px !important;
+  }
+}
+
+@media (max-height: 670px) {
+  /* Chip */
+  .mdc-evolution-chip__text-label {
+    font-size: 10px !important;
+  }
+}
