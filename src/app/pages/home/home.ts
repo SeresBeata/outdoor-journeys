@@ -8,9 +8,10 @@ import { Hero } from '../../components/sections/hero/hero'
 import { About } from '../../components/sections/about/about'
 import { WeatherAnimation } from '../../components/weather-animation/weather-animation'
 import { CarouselSection } from '../../components/sections/carousel-section/carousel-section'
+import { Reviews } from '../../components/sections/reviews/reviews'
 import { environment } from '../../../environments/environment'
 
-interface Post {
+export interface Post {
   title: string
   username: string
   firstName: string
@@ -40,6 +41,7 @@ interface Users {
     WeatherAnimation,
     About,
     CarouselSection,
+    Reviews,
     MatCardModule,
     MatChipsModule,
     MatProgressBarModule,
