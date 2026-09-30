@@ -2,6 +2,7 @@ import { Component, OnInit, signal } from '@angular/core'
 import { MatProgressBarModule } from '@angular/material/progress-bar'
 import { MatCardModule } from '@angular/material/card'
 import { MatChipsModule } from '@angular/material/chips'
+import { MatIconModule } from '@angular/material/icon'
 import { Toolbar } from '../../components/toolbar/toolbar'
 import { Hero } from '../../components/sections/hero/hero'
 import { About } from '../../components/sections/about/about'
@@ -15,12 +16,14 @@ interface Post {
   firstName: string
   lastName: string
   body: string
+  tags: string[] | null | undefined
 }
 
 interface Posts {
   title: string
   body: string
   userId: string
+  tags: string[] | null | undefined
 }
 
 interface Users {
@@ -39,7 +42,8 @@ interface Users {
     CarouselSection,
     MatCardModule,
     MatChipsModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatIconModule
   ],
   selector: 'app-home',
   styleUrl: './home.css',

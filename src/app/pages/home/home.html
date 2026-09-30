@@ -24,13 +24,13 @@
     scroll-snap-align: start;
   }
 
-  .example-card {
+  .review-card {
     margin: 5px;
     max-width: 400px;
-    min-height: 300px;
+    min-height: 330px;
   }
 
-  .example-card-footer {
+  .review-card-footer {
     padding: 16px;
   }
 
@@ -54,11 +54,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     border-radius: 50%;
     font-size: 20px;
     font-weight: 700;
     background-color: var(--mat-sys-primary-container);
+    text-transform: uppercase;
+  }
+
+  .card-content-body {
+    font-style: italic;
+  }
+
+  .card-content-body::before {
+    content: '“';
+  }
+
+  .card-content-body::after {
+    content: '”';
   }
 
   @media all and (max-width: 1250px) {
@@ -66,9 +79,10 @@
       flex-direction: column;
     }
 
-    .example-card {
+    .review-card {
       max-width: 100%;
       max-height: 260px;
+      min-height: 100px;
     }
   }
 </style>
@@ -81,22 +95,29 @@
     <section class="section-style">
       <div class="cards-wrapper">
         @for (post of posts(); track post) {
-          <mat-card class="example-card" appearance="outlined">
+          <mat-card class="review-card" appearance="outlined">
             <mat-card-header>
               <div class="card__avatar-wrapper">
                 <div class="card__avatar">
-                  {{ post.username.charAt(0) }}
+                  <mat-icon
+                    aria-hidden="false"
+                    aria-label="Person icon"
+                    fontIcon="person"
+                  ></mat-icon>
                 </div>
               </div>
-              <mat-card-title style="padding-top: 20px">{{ post.username }}</mat-card-title>
             </mat-card-header>
             <mat-card-content>
-              <p>{{ post.body }}</p>
+              <p class="card-content-body">{{ post.body }}</p>
+              <span>{{ post.firstName + ' ' + post.lastName }}</span>
             </mat-card-content>
-            <mat-card-footer class="example-card-footer">
-              <mat-chip-set aria-label="Chihuahua traits">
-                <mat-chip>{{ post.firstName }}</mat-chip>
-                <mat-chip>{{ post.lastName }}</mat-chip>
+            <mat-card-footer class="review-card-footer">
+              <mat-chip-set aria-label="Tags of comments">
+                @if (post.tags && post.tags?.length > 0) {
+                  @for (tag of post.tags; track tag) {
+                    <mat-chip class="card-chip">{{ tag }}</mat-chip>
+                  }
+                }
               </mat-chip-set>
             </mat-card-footer>
           </mat-card>
