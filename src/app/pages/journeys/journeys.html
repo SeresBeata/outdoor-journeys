@@ -171,6 +171,31 @@
     transform: translateY(-1px);
   }
 
+  .thumbnail-container {
+    height: 100px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  .thumbnail-img {
+    width: 100px;
+    height: 100px;
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+    border-radius: 10px;
+    border: var(--mat-sys-primary-container) solid 2px;
+  }
+  .thumbnail-container .thumbnail-img img {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    height: 100%;
+    width: auto;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+
   @media (max-width: 700px) {
     .card {
       grid-template-columns: 45% 55%;
@@ -219,7 +244,11 @@
             <th mat-header-cell *matHeaderCellDef>{{ column }}</th>
             <td mat-cell *matCellDef="let element">
               @if (column === 'image') {
-                <img [src]="element.src.small" [alt]="element.alt" width="100" height="100" />
+                <div class="thumbnail-container">
+                  <div class="thumbnail-img">
+                    <img [src]="element.src.small" [alt]="element.alt" />
+                  </div>
+                </div>
               } @else if (column === 'photographer_url') {
                 <div class="truncated-text">
                   <a [href]="element.photographer_url">
