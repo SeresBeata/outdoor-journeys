@@ -58,6 +58,14 @@
     content: '~';
   }
 
+  .card-user-title {
+    visibility: hidden;
+  }
+
+  .card-user-title::before {
+    content: '~';
+  }
+
   @media all and (max-width: 1250px) {
     .cards-wrapper {
       flex-direction: column;
@@ -71,6 +79,21 @@
   }
 
   @media (max-height: 992px) and (max-width: 1249px) {
+    .card__avatar-wrapper {
+      width: 50%;
+      justify-content: flex-end;
+    }
+
+    .card-user-title {
+      padding-top: 5px;
+      width: 50%;
+      visibility: visible;
+    }
+
+    .card-user {
+      display: none;
+    }
+
     .mat-card-footer {
       padding-top: 0px;
       padding-bottom: 0px;
@@ -97,7 +120,7 @@
     }
   }
 
-  @media (max-height: 670px) {
+  @media (max-width: 670px) {
     p {
       font-size: x-small;
       margin: 0;
@@ -116,6 +139,8 @@
     @for (post of posts(); track post) {
       <mat-card class="review-card" appearance="outlined">
         <mat-card-header>
+          <span class="card-user-title">{{ post.firstName + ' ' + post.lastName }}</span>
+
           <div class="card__avatar-wrapper">
             <div class="card__avatar">
               <mat-icon aria-hidden="false" aria-label="Person icon" fontIcon="person"></mat-icon>
