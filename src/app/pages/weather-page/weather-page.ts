@@ -31,7 +31,7 @@ interface WeatherSpec {
 
 interface Main {
   humidity: string
-  temp: string
+  temp: number
 }
 
 interface Wind {
@@ -58,6 +58,10 @@ export class WeatherPage {
   img = signal('')
   city = signal('')
   lang = signal('en')
+
+  round(val: number | undefined) {
+    return val !== undefined ? Math.round(val) : ''
+  }
 
   async getWeather() {
     const apiKey = environment.weatherApiKey
