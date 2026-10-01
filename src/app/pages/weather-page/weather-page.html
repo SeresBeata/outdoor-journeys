@@ -1,48 +1,67 @@
 <style>
-  .root {
-    height: 100dvh;
+  .form-wrapper {
     display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
-    overflow: hidden;
+    margin-top: 100px;
+  }
+
+  .weather-from-field {
+    min-width: 300px;
+  }
+
+  .weather-btn {
+    margin-top: 20px;
+    margin-bottom: 50px;
+  }
+
+  .weather-wrapper {
+    min-width: 300px;
+    display: flex;
+    justify-content: center;
   }
 </style>
 
-<div class="root">
+<div>
   <app-toolbar></app-toolbar>
+  <div class="container form-wrapper">
+    <mat-form-field class="weather-from-field">
+      <mat-label>City</mat-label>
+      <input
+        matInput
+        type="text"
+        [ngModel]="city()"
+        (ngModelChange)="city.set($event)"
+        placeholder="e.g. London"
+      />
+      @if (city()) {
+        <button matSuffix matIconButton aria-label="Clear" (click)="city.set('')">
+          <mat-icon>close</mat-icon>
+        </button>
+      }
+    </mat-form-field>
+    <button matButton="tonal" (click)="getWeather()" class="weather-btn">Check the Weather</button>
 
-  <mat-form-field>
-    <mat-label>City</mat-label>
-    <input
-      matInput
-      type="text"
-      [ngModel]="city()"
-      (ngModelChange)="city.set($event)"
-      placeholder="e.g. London"
-    />
-    @if (city()) {
-      <button matSuffix matIconButton aria-label="Clear" (click)="city.set('')">
-        <mat-icon>close</mat-icon>
-      </button>
-    }
-  </mat-form-field>
-  <button matButton (click)="getWeather()">Search</button>
-
-  @if (weather()) {
-    <div className="city">
-      <h2 className="city-name">
-        <span>{{ weather()?.name }}</span>
-        <sup>{{ weather()?.sys?.country }}</sup>
-      </h2>
-      <div className="city-temp">
-        {{ weather()?.main.temp }}
-        <sup>°C </sup>
-      </div>
-      <div className="info">
-        <img className="city-icon" src="{{ img() }}" />
-        <p>{{ weather()?.weather[0].description }}</p>
-      </div>
+    <div class="weather-wrapper">
+      @if (weather()) {
+        <div className="city">
+          <h2 className="city-name">
+            <span>{{ weather()?.name }}</span>
+            <sup>{{ weather()?.sys?.country }}</sup>
+          </h2>
+          <div className="city-temp">
+            {{ weather()?.main.temp }}
+            <sup>°C </sup>
+          </div>
+          <div className="info">
+            <img className="city-icon" src="{{ img() }}" />
+            <p>{{ weather()?.weather[0].description }}</p>
+          </div>
+        </div>
+      } @else {
+        <div>No City</div>
+      }
     </div>
-  } @else {
-    <div>No City</div>
-  }
+  </div>
 </div>
