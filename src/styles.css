@@ -3,8 +3,8 @@
 /* Carousel btn icon */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  background-color: var(--mat-sys-primary-container);
-  border-radius: 50%;
+  height: 100px;
+  width: 100px;
 }
 
 @media (max-height: 992px) and (max-width: 1000px) {

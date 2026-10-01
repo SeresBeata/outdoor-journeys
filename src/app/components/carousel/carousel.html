@@ -10,7 +10,7 @@
       height: 500px;
     }
 
-    .my-img {
+    .carousel-img {
       width: 900px;
       height: 500px;
     }
@@ -22,7 +22,7 @@
       height: 500px;
     }
 
-    .my-img {
+    .carousel-img {
       width: 700px;
       height: 500px;
     }
@@ -34,7 +34,7 @@
       height: 500px;
     }
 
-    .my-img {
+    .carousel-img {
       width: 600px;
       height: 500px;
     }
@@ -46,7 +46,7 @@
       height: 200px;
     }
 
-    .my-img {
+    .carousel-img {
       width: 370px;
       height: 200px;
     }
@@ -58,8 +58,20 @@
       height: 200px;
     }
 
-    .my-img {
+    .carousel-img {
       width: 340px;
+      height: 200px;
+    }
+  }
+
+  @media (max-height: 600px) and (max-width: 1200px) {
+    .wrapper {
+      width: 370px;
+      height: 200px;
+    }
+
+    .carousel-img {
+      width: 370px;
       height: 200px;
     }
   }
@@ -69,11 +81,11 @@
   @for (img of images; track img; let i = $index) {
     <ng-template ngbSlide>
       <div class="carousel-caption">
-        <h3>My slide {{ i + 1 }} title</h3>
+        <h3>{{ img.text }}</h3>
       </div>
-      <a href=" {{ img.link }} " target="_blank" rel="nofollow noopener noreferrer">
+      <a [href]="img.link" target="_blank" rel="nofollow noopener noreferrer">
         <div class="picsum-img-wrapper">
-          <img [src]="img.src" alt="My image {{ i + 1 }} description" class="my-img" />
+          <img [src]="img.src" alt="Carousel image {{ i + 1 }}" class="carousel-img" />
         </div>
       </a>
     </ng-template>

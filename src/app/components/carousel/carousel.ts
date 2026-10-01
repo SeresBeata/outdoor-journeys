@@ -12,7 +12,8 @@ export class Carousel {
   images = [16, 29, 62, 66, 83, 984, 125, 128].map((n) => {
     return {
       src: `${environment.carouselUrl}${n}/900/500`,
-      link: 'link'
+      text: 'Find your Journey!',
+      link: environment.navJourneys
     }
   })
 }
