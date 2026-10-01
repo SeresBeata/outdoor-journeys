@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin-top: 100px;
+    margin-top: 50px;
   }
 
   .weather-from-field {
@@ -55,8 +55,7 @@
     padding: 0.2em 0.6em;
     margin-left: 0.2em;
     border-radius: 30px;
-    color: #fff;
-    background: #ff8c00;
+    background-color: var(--mat-sys-primary-container);
   }
 
   .city-icon {
@@ -65,16 +64,22 @@
     height: 100px;
   }
 
+  .city p {
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
   .info {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  .city p {
-    margin-top: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+  .info-icon-wrapper {
+    display: flex;
+    align-items: center;
+    padding-bottom: 3px;
   }
 </style>
 
@@ -113,6 +118,18 @@
           <div class="info">
             <img class="city-icon" src="{{ img() }}" />
             <p>{{ weather()?.weather[0].description }}</p>
+            <div class="info-icon-wrapper">
+              <mat-icon
+                aria-hidden="false"
+                aria-label="humidity_percentage"
+                fontIcon="water_drop"
+              ></mat-icon>
+              Humidity: {{ weather()?.main.humidity }}%
+            </div>
+            <div class="info-icon-wrapper">
+              <mat-icon aria-hidden="false" aria-label="wind" fontIcon="air"></mat-icon>
+              Wind: {{ weather()?.wind.speed }}m/s
+            </div>
           </div>
         </div>
       } @else {
