@@ -9,5 +9,40 @@
 
 <div class="root">
   <app-toolbar></app-toolbar>
-  <p>weather-page works!</p>
+
+  <mat-form-field>
+    <mat-label>City</mat-label>
+    <input
+      matInput
+      type="text"
+      [ngModel]="city()"
+      (ngModelChange)="city.set($event)"
+      placeholder="e.g. London"
+    />
+    @if (city()) {
+      <button matSuffix matIconButton aria-label="Clear" (click)="city.set('')">
+        <mat-icon>close</mat-icon>
+      </button>
+    }
+  </mat-form-field>
+  <button matButton (click)="getWeather()">Search</button>
+
+  @if (weather()) {
+    <div className="city">
+      <h2 className="city-name">
+        <span>{{ weather()?.name }}</span>
+        <sup>{{ weather()?.sys?.country }}</sup>
+      </h2>
+      <div className="city-temp">
+        {{ weather()?.main.temp }}
+        <sup>°C </sup>
+      </div>
+      <div className="info">
+        <img className="city-icon" src="{{ img() }}" />
+        <p>{{ weather()?.weather[0].description }}</p>
+      </div>
+    </div>
+  } @else {
+    <div>No City</div>
+  }
 </div>
