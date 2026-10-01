@@ -29,6 +29,7 @@ import { environment } from '../../../environments/environment'
 export class Toolbar {
   navHome = environment.navHome
   navJourneys = environment.navJourneys
+  navWeatherCheck = environment.navWeatherCheck
 
   isDarkMode = false
 
