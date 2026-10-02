@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core'
 import { Toolbar } from '../../components/toolbar/toolbar'
+import { FrameAnimation } from '../../components/frame-animation/frame-animation'
 import { FormBuilder, Validators, FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { MatInputModule } from '@angular/material/input'
 import { MatFormFieldModule } from '@angular/material/form-field'
@@ -14,7 +15,8 @@ import { MatButtonModule } from '@angular/material/button'
     FormsModule,
     ReactiveFormsModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    FrameAnimation
   ],
   selector: 'app-contact',
   styleUrl: './contact.css',

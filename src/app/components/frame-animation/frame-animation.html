@@ -1,1 +1,56 @@
-<p>frame-animation works!</p>
+<style>
+  .contact-animation-wrapper {
+    margin-top: 200px;
+    height: 110px;
+  }
+
+  span {
+    color: var(--mat-on-sys-surface);
+    font-size: 60px;
+    font-weight: bold;
+    text-decoration: none;
+    margin: 0;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  span:before,
+  span:after {
+    content: '';
+    padding: 0.9em 0.4em;
+    position: absolute;
+    left: 50%;
+    width: 100%;
+    top: 50%;
+    display: block;
+    border: 5px solid var(--mat-sys-on-primary-container);
+    transform: translateX(-50%) translateY(-50%) rotate(0deg);
+    animation: 10s infinite alternate ease-in-out tipsy;
+  }
+
+  span:before {
+    border-color: var(--mat-sys-on-primary-container) var(--mat-sys-on-primary-container)
+      rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+    z-index: -1;
+  }
+
+  span:after {
+    border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) var(--mat-sys-on-primary-container)
+      var(--mat-sys-on-primary-container);
+    box-shadow: 25px 25px 25px rgba(46, 46, 49, 0.8);
+  }
+
+  @keyframes tipsy {
+    0% {
+      transform: translateX(-50%) translateY(-50%) rotate(0deg);
+    }
+    100% {
+      transform: translateX(-50%) translateY(-50%) rotate(360deg);
+    }
+  }
+</style>
+
+<div class="contact-animation-wrapper"><span>Contact</span></div>
