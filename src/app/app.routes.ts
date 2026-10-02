@@ -2,6 +2,7 @@ import { Routes } from '@angular/router'
 import { Home } from './pages/home/home'
 import { Journeys } from './pages/journeys/journeys'
 import { WeatherPage } from './pages/weather-page/weather-page'
+import { Contact } from './pages/contact/contact'
 
 // redirect to home
 export const routes: Routes = [
@@ -21,5 +22,9 @@ export const routes: Routes = [
   {
     path: 'weather',
     component: WeatherPage
+  },
+  {
+    path: 'contact',
+    component: Contact
   }
 ]
