@@ -83,39 +83,6 @@
     align-items: center;
     padding-bottom: 3px;
   }
-
-  .arrow {
-    --color-1: var(--mat-sys-on-primary-container);
-    --size: 1px;
-    width: calc(15 * var(--size));
-    height: calc(20 * var(--size));
-    background: var(--color-1);
-    margin-left: calc(15 * var(--size));
-    margin-top: calc(15 * var(--size));
-    display: inline-block;
-    position: relative;
-    box-sizing: border-box;
-    animation: bump 0.4s linear infinite alternate;
-  }
-  .arrow::after {
-    content: '';
-    box-sizing: border-box;
-    left: 50%;
-    bottom: 100%;
-    transform: translate(-50%, 0);
-    position: absolute;
-    border: calc(15 * var(--size)) solid transparent;
-    border-bottom-color: var(--color-1);
-  }
-
-  @keyframes bump {
-    0% {
-      transform: translate(-50%, calc(5 * var(--size)));
-    }
-    100% {
-      transform: translate(-50%, calc(-5 * var(--size)));
-    }
-  }
 </style>
 
 <div>
@@ -168,7 +135,7 @@
           </div>
         </div>
       } @else {
-        <div><span class="arrow"></span></div>
+        <div><app-arrow-animation></app-arrow-animation></div>
       }
     </div>
   </div>

@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core'
 import { Toolbar } from '../../components/toolbar/toolbar'
 import { WeatherAnimation } from '../../components/weather-animation/weather-animation'
+import { ArrowAnimation } from '../../components/arrow-animation/arrow-animation'
 import { MatIconModule } from '@angular/material/icon'
 import { MatButtonModule } from '@angular/material/button'
 import { FormsModule } from '@angular/forms'
@@ -48,7 +49,8 @@ interface Wind {
     FormsModule,
     MatButtonModule,
     MatIconModule,
-    WeatherAnimation
+    WeatherAnimation,
+    ArrowAnimation
   ],
 
   selector: 'app-weather-page',
