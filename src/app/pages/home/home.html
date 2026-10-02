@@ -14,11 +14,6 @@
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
   }
-
-  .section-style {
-    height: 100%;
-    scroll-snap-align: start;
-  }
 </style>
 
 <div class="root">
@@ -28,9 +23,5 @@
     <app-about></app-about>
     <app-reviews [posts]="posts()"></app-reviews>
     <app-carousel-section></app-carousel-section>
-    <section class="section-style">
-      Weather
-      <app-weather-animation></app-weather-animation>
-    </section>
   </div>
 </div>

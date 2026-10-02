@@ -2,7 +2,6 @@ import { Component, OnInit, signal } from '@angular/core'
 import { Toolbar } from '../../components/toolbar/toolbar'
 import { Hero } from '../../components/sections/hero/hero'
 import { About } from '../../components/sections/about/about'
-import { WeatherAnimation } from '../../components/weather-animation/weather-animation'
 import { CarouselSection } from '../../components/sections/carousel-section/carousel-section'
 import { Reviews } from '../../components/sections/reviews/reviews'
 import { environment } from '../../../environments/environment'
@@ -31,7 +30,7 @@ interface Users {
 }
 
 @Component({
-  imports: [Toolbar, Hero, WeatherAnimation, About, CarouselSection, Reviews],
+  imports: [Toolbar, Hero, About, CarouselSection, Reviews],
   selector: 'app-home',
   styleUrl: './home.css',
   templateUrl: './home.html'
