@@ -1,1 +1,123 @@
-<app-toolbar></app-toolbar>
+<style>
+  .mat-stepper-vertical {
+    margin-top: 8px;
+  }
+
+  .mat-mdc-form-field {
+    margin-top: 16px;
+  }
+
+  .stepper-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 50px;
+  }
+
+  .stepper-field-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+</style>
+
+<div>
+  <app-toolbar></app-toolbar>
+
+  <div class="container stepper-wrapper">
+    <form [formGroup]="contactForm" (ngSubmit)="submit()">
+      <mat-stepper orientation="vertical" linear #stepper>
+        <!-- STEP 1 -->
+        <mat-step [stepControl]="contactForm.controls.personal">
+          <ng-template matStepLabel>Your details</ng-template>
+
+          <div formGroupName="personal" class="stepper-field-wrapper">
+            <mat-form-field>
+              <mat-label>Name</mat-label>
+              <input matInput formControlName="name" />
+
+              @if (contactForm.controls.personal.controls.name.hasError('required')) {
+                <mat-error>Name is required</mat-error>
+              }
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Email</mat-label>
+              <input matInput type="email" formControlName="email" />
+
+              @if (contactForm.controls.personal.controls.email.hasError('required')) {
+                <mat-error>Email is required</mat-error>
+              }
+
+              @if (contactForm.controls.personal.controls.email.hasError('email')) {
+                <mat-error>Please enter a valid email</mat-error>
+              }
+            </mat-form-field>
+          </div>
+
+          <div>
+            <button mat-button matStepperNext type="button">Next</button>
+          </div>
+        </mat-step>
+
+        <!-- STEP 2 -->
+        <mat-step [stepControl]="contactForm.controls.message">
+          <ng-template matStepLabel>Message</ng-template>
+
+          <div formGroupName="message" class="stepper-field-wrapper">
+            <mat-form-field>
+              <mat-label>Subject</mat-label>
+              <input matInput formControlName="subject" />
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Message</mat-label>
+              <textarea matInput rows="5" formControlName="message"> </textarea>
+            </mat-form-field>
+          </div>
+
+          <div>
+            <button mat-button matStepperPrevious type="button">Back</button>
+
+            <button mat-button matStepperNext type="button">Review</button>
+          </div>
+        </mat-step>
+
+        <!-- STEP 3 -->
+        <mat-step>
+          <ng-template matStepLabel>Review</ng-template>
+
+          <h3>Review your message</h3>
+
+          <p>
+            <strong>Name:</strong>
+            {{ contactForm.controls.personal.controls.name.value }}
+          </p>
+
+          <p>
+            <strong>Email:</strong>
+            {{ contactForm.controls.personal.controls.email.value }}
+          </p>
+
+          <p>
+            <strong>Subject:</strong>
+            {{ contactForm.controls.message.controls.subject.value }}
+          </p>
+
+          <p>
+            <strong>Message:</strong>
+            {{ contactForm.controls.message.controls.message.value }}
+          </p>
+
+          <div>
+            <button mat-button matStepperPrevious type="button">Back</button>
+
+            <button matButton (click)="stepper.reset()">Reset</button>
+
+            <button mat-flat-button type="submit">Send message</button>
+          </div>
+        </mat-step>
+      </mat-stepper>
+    </form>
+  </div>
+</div>
