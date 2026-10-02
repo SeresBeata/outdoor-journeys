@@ -30,6 +30,7 @@ export class Toolbar {
   navHome = environment.navHome
   navJourneys = environment.navJourneys
   navWeatherCheck = environment.navWeatherCheck
+  navContact = environment.navContact
 
   isDarkMode = false
 
