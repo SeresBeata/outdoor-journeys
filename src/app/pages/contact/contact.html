@@ -13,11 +13,31 @@
     align-items: center;
     flex-direction: column;
     margin-top: 50px;
+    width: 40%;
   }
 
   .stepper-field-wrapper {
     display: flex;
     flex-direction: column;
+  }
+
+  .form-stepper-textarea {
+    max-width: 100%;
+  }
+
+  form {
+    width: 100%;
+  }
+
+  @media all and (max-width: 1100px) {
+    .stepper-wrapper {
+      width: 80%;
+    }
+  }
+  @media all and (max-width: 670px) {
+    .stepper-wrapper {
+      width: 90%;
+    }
   }
 </style>
 
@@ -74,7 +94,8 @@
 
             <mat-form-field>
               <mat-label>Message</mat-label>
-              <textarea matInput rows="5" formControlName="message"> </textarea>
+              <textarea matInput rows="5" formControlName="message" class="form-stepper-textarea">
+              </textarea>
             </mat-form-field>
           </div>
 
