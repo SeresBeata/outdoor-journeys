@@ -9,6 +9,7 @@ import {
   NgbDropdownItem,
   NgbDropdownButtonItem
 } from '@ng-bootstrap/ng-bootstrap/dropdown'
+import { RouterLink, RouterLinkActive } from '@angular/router'
 import { environment } from '../../../environments/environment'
 
 @Component({
@@ -20,7 +21,9 @@ import { environment } from '../../../environments/environment'
     NgbDropdownToggle,
     NgbDropdownMenu,
     NgbDropdownItem,
-    NgbDropdownButtonItem
+    NgbDropdownButtonItem,
+    RouterLink,
+    RouterLinkActive
   ],
   selector: 'app-toolbar',
   styleUrl: './toolbar.css',
