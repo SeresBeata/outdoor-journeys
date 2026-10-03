@@ -25,6 +25,15 @@
     max-width: 100%;
   }
 
+  .form-contact-btn {
+    margin-right: 10px;
+  }
+
+  .form-contact-btn:nth-of-type(3) {
+    margin-left: 10px;
+    margin-right: 0px;
+  }
+
   form {
     width: 100%;
   }
@@ -34,9 +43,16 @@
       width: 80%;
     }
   }
+
   @media all and (max-width: 670px) {
     .stepper-wrapper {
       width: 90%;
+    }
+  }
+
+  @media all and (max-width: 400px) {
+    .mdc-button {
+      width: 30px;
     }
   }
 </style>
@@ -155,11 +171,13 @@
           </p>
 
           <div>
-            <button mat-button matStepperPrevious type="button">Back</button>
+            <button mat-button matStepperPrevious type="button" class="form-contact-btn">
+              Back
+            </button>
 
-            <button matButton (click)="stepper.reset()">Reset</button>
+            <button matButton (click)="stepper.reset()" class="form-contact-btn">Reset</button>
 
-            <button mat-flat-button type="submit">Send message</button>
+            <button mat-flat-button type="submit" class="form-contact-btn">Send</button>
           </div>
         </mat-step>
       </mat-stepper>
