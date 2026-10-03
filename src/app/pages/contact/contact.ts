@@ -28,13 +28,13 @@ export class Contact {
 
   contactForm = this.fb.group({
     personal: this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]]
+      name: ['', [Validators.required, Validators.maxLength(50)]],
+      email: ['', [Validators.required, Validators.email, Validators.maxLength(50)]]
     }),
 
     message: this.fb.group({
-      subject: ['', Validators.required],
-      message: ['', Validators.required]
+      subject: ['', [Validators.required, Validators.maxLength(50)]],
+      message: ['', [Validators.required, Validators.maxLength(500)]]
     })
   })
 

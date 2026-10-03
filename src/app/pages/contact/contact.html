@@ -61,6 +61,9 @@
               @if (contactForm.controls.personal.controls.name.hasError('required')) {
                 <mat-error>Name is required</mat-error>
               }
+              @if (contactForm.controls.personal.controls.name.hasError('maxlength')) {
+                <mat-error>Maximum 50 characters</mat-error>
+              }
             </mat-form-field>
 
             <mat-form-field>
@@ -73,6 +76,10 @@
 
               @if (contactForm.controls.personal.controls.email.hasError('email')) {
                 <mat-error>Please enter a valid email</mat-error>
+              }
+
+              @if (contactForm.controls.personal.controls.email.hasError('maxlength')) {
+                <mat-error>Maximum 50 characters</mat-error>
               }
             </mat-form-field>
           </div>
@@ -90,12 +97,26 @@
             <mat-form-field>
               <mat-label>Subject</mat-label>
               <input matInput formControlName="subject" />
+
+              @if (contactForm.controls.message.controls.subject.hasError('required')) {
+                <mat-error>Subject is required</mat-error>
+              }
+              @if (contactForm.controls.message.controls.subject.hasError('maxlength')) {
+                <mat-error>Maximum 50 characters</mat-error>
+              }
             </mat-form-field>
 
             <mat-form-field>
               <mat-label>Message</mat-label>
               <textarea matInput rows="5" formControlName="message" class="form-stepper-textarea">
               </textarea>
+
+              @if (contactForm.controls.message.controls.message.hasError('required')) {
+                <mat-error>Message is required</mat-error>
+              }
+              @if (contactForm.controls.message.controls.message.hasError('maxlength')) {
+                <mat-error>Maximum 100 characters</mat-error>
+              }
             </mat-form-field>
           </div>
 
@@ -129,6 +150,7 @@
 
           <p>
             <strong>Message:</strong>
+            <br />
             {{ contactForm.controls.message.controls.message.value }}
           </p>
 
