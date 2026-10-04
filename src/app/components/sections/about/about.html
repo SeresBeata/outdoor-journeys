@@ -212,10 +212,12 @@
           [style.background-image]="'url(' + item.imgUrl + ')'"
         >
           <div class="about-main-section__grid-item-wrapper">
-            <h3>{{ item.title }}</h3>
-            <p>{{ item.p }}</p>
+            <h3>{{ item.title | translate }}</h3>
+            <p>{{ item.p | translate }}</p>
             @if (item.link) {
-              <a matButton="tonal" href="{{ item.link }}">{{ item.linkText }}</a>
+              <a matButton="tonal" href="{{ item.link | translate }}">{{
+                item.linkText | translate
+              }}</a>
             }
           </div>
         </div>
