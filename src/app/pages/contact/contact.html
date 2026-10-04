@@ -67,117 +67,147 @@
       <mat-stepper orientation="vertical" linear #stepper>
         <!-- STEP 1 -->
         <mat-step [stepControl]="contactForm.controls.personal">
-          <ng-template matStepLabel>Your details</ng-template>
+          <ng-template matStepLabel> {{ 'contact.personal-data' | translate }}</ng-template>
 
           <div formGroupName="personal" class="stepper-field-wrapper">
             <mat-form-field>
-              <mat-label>Name</mat-label>
+              <mat-label>{{ 'contact.name' | translate }}</mat-label>
               <input matInput formControlName="name" />
 
               @if (contactForm.controls.personal.controls.name.hasError('required')) {
-                <mat-error>Name is required</mat-error>
+                <mat-error>
+                  <span>{{ 'contact.name' | translate }} </span>
+                  {{ 'contact.validation-message.required' | translate }}
+                </mat-error>
               }
               @if (contactForm.controls.personal.controls.name.hasError('maxlength')) {
-                <mat-error>Maximum 50 characters</mat-error>
+                <mat-error>{{
+                  'contact.validation-message.max-length' | translate: { length: 50 }
+                }}</mat-error>
               }
             </mat-form-field>
 
             <mat-form-field>
-              <mat-label>Email</mat-label>
+              <mat-label>{{ 'contact.email' | translate }}</mat-label>
               <input matInput type="email" formControlName="email" />
 
               @if (contactForm.controls.personal.controls.email.hasError('required')) {
-                <mat-error>Email is required</mat-error>
+                <mat-error>
+                  <span>{{ 'contact.email' | translate }} </span>
+                  {{ 'contact.validation-message.required' | translate }}
+                </mat-error>
               }
 
               @if (contactForm.controls.personal.controls.email.hasError('email')) {
-                <mat-error>Please enter a valid email</mat-error>
+                <mat-error>{{ 'contact.validation-message.valid-email' | translate }}</mat-error>
               }
 
               @if (contactForm.controls.personal.controls.email.hasError('maxlength')) {
-                <mat-error>Maximum 50 characters</mat-error>
+                <mat-error>{{
+                  'contact.validation-message.max-length' | translate: { length: 50 }
+                }}</mat-error>
               }
             </mat-form-field>
           </div>
 
           <div>
-            <button mat-button matStepperNext type="button">Next</button>
+            <button mat-button matStepperNext type="button">
+              {{ 'contact.next-btn' | translate }}
+            </button>
           </div>
         </mat-step>
 
         <!-- STEP 2 -->
         <mat-step [stepControl]="contactForm.controls.message">
-          <ng-template matStepLabel>Message</ng-template>
+          <ng-template matStepLabel>{{ 'contact.message' | translate }}</ng-template>
 
           <div formGroupName="message" class="stepper-field-wrapper">
             <mat-form-field>
-              <mat-label>Subject</mat-label>
+              <mat-label>{{ 'contact.subject' | translate }}</mat-label>
               <input matInput formControlName="subject" />
 
               @if (contactForm.controls.message.controls.subject.hasError('required')) {
-                <mat-error>Subject is required</mat-error>
+                <mat-error>
+                  <span>{{ 'contact.subject' | translate }}</span>
+                  {{ 'contact.validation-message.required' | translate }}
+                </mat-error>
               }
               @if (contactForm.controls.message.controls.subject.hasError('maxlength')) {
-                <mat-error>Maximum 50 characters</mat-error>
+                <mat-error>{{
+                  'contact.validation-message.max-length' | translate: { length: 50 }
+                }}</mat-error>
               }
             </mat-form-field>
 
             <mat-form-field>
-              <mat-label>Message</mat-label>
+              <mat-label>{{ 'contact.message' | translate }}</mat-label>
               <textarea matInput rows="5" formControlName="message" class="form-stepper-textarea">
               </textarea>
 
               @if (contactForm.controls.message.controls.message.hasError('required')) {
-                <mat-error>Message is required</mat-error>
+                <mat-error>
+                  <span>{{ 'contact.message' | translate }}</span>
+                  {{ 'contact.validation-message.required' | translate }}
+                </mat-error>
               }
               @if (contactForm.controls.message.controls.message.hasError('maxlength')) {
-                <mat-error>Maximum 100 characters</mat-error>
+                <mat-error>{{
+                  'contact.validation-message.max-length' | translate: { length: 100 }
+                }}</mat-error>
               }
             </mat-form-field>
           </div>
 
           <div>
-            <button mat-button matStepperPrevious type="button">Back</button>
+            <button mat-button matStepperPrevious type="button">
+              {{ 'contact.previous-btn' | translate }}
+            </button>
 
-            <button mat-button matStepperNext type="button">Review</button>
+            <button mat-button matStepperNext type="button">
+              {{ 'contact.next-btn' | translate }}
+            </button>
           </div>
         </mat-step>
 
         <!-- STEP 3 -->
         <mat-step>
-          <ng-template matStepLabel>Review</ng-template>
+          <ng-template matStepLabel>{{ 'contact.summary' | translate }}</ng-template>
 
-          <h3>Review your message</h3>
+          <h3>{{ 'contact.summary-text' | translate }}</h3>
 
           <p>
-            <strong>Name:</strong>
+            <strong> {{ 'contact.name' | translate }}: </strong>
             {{ contactForm.controls.personal.controls.name.value }}
           </p>
 
           <p>
-            <strong>Email:</strong>
+            <strong>{{ 'contact.email-short' | translate }}: </strong>
             {{ contactForm.controls.personal.controls.email.value }}
           </p>
 
           <p>
-            <strong>Subject:</strong>
+            <strong>{{ 'contact.subject' | translate }}: </strong>
             {{ contactForm.controls.message.controls.subject.value }}
           </p>
 
           <p>
-            <strong>Message:</strong>
+            <strong>{{ 'contact.message' | translate }}: </strong>
             <br />
             {{ contactForm.controls.message.controls.message.value }}
           </p>
 
           <div>
             <button mat-button matStepperPrevious type="button" class="form-contact-btn">
-              Back
+              {{ 'contact.previous-btn' | translate }}
             </button>
 
-            <button matButton (click)="stepper.reset()" class="form-contact-btn">Reset</button>
+            <button matButton (click)="stepper.reset()" class="form-contact-btn">
+              {{ 'contact.reset-btn' | translate }}
+            </button>
 
-            <button mat-flat-button type="submit" class="form-contact-btn">Send</button>
+            <button mat-flat-button type="submit" class="form-contact-btn">
+              {{ 'contact.submit-btn' | translate }}
+            </button>
           </div>
         </mat-step>
       </mat-stepper>

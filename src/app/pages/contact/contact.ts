@@ -6,6 +6,7 @@ import { MatInputModule } from '@angular/material/input'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatStepperModule } from '@angular/material/stepper'
 import { MatButtonModule } from '@angular/material/button'
+import { TranslatePipe } from '@ngx-translate/core'
 import { environment } from '../../../environments/environment'
 
 @Component({
@@ -17,7 +18,8 @@ import { environment } from '../../../environments/environment'
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    FrameAnimation
+    FrameAnimation,
+    TranslatePipe
   ],
   selector: 'app-contact',
   styleUrl: './contact.css',
