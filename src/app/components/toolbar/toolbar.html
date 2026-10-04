@@ -1,5 +1,5 @@
 <style>
-  .example-spacer {
+  .nav-bar-spacer {
     flex: 1 1 auto;
   }
 
@@ -73,18 +73,20 @@
     <span class="toolbar-text">Outdoor Journeys</span>
   </div>
 
-  <span class="example-spacer"></span>
+  <span class="nav-bar-spacer"></span>
 
-  <a mat-button [routerLink]="navHome" class="toolbar-nav-btn" routerLinkActive="active">Home</a>
-  <a mat-button [routerLink]="navJourneys" class="toolbar-nav-btn" routerLinkActive="active"
-    >Journeys</a
+  <a mat-button [routerLink]="navHome" class="toolbar-nav-btn" routerLinkActive="active">
+    {{ 'nav.home' | translate }}</a
   >
-  <a mat-button [routerLink]="navWeatherCheck" class="toolbar-nav-btn" routerLinkActive="active"
-    >Weather</a
-  >
-  <a mat-button [routerLink]="navContact" class="toolbar-nav-btn" routerLinkActive="active"
-    >Contact</a
-  >
+  <a mat-button [routerLink]="navJourneys" class="toolbar-nav-btn" routerLinkActive="active">{{
+    'nav.journeys' | translate
+  }}</a>
+  <a mat-button [routerLink]="navWeatherCheck" class="toolbar-nav-btn" routerLinkActive="active">{{
+    'nav.weather' | translate
+  }}</a>
+  <a mat-button [routerLink]="navContact" class="toolbar-nav-btn" routerLinkActive="active">{{
+    'nav.contact' | translate
+  }}</a>
 
   <button
     class="toolbar-nav-btn"
@@ -97,28 +99,40 @@
     </mat-icon>
   </button>
 
+  @if (languageService.currentLanguage === 'en') {
+    <button mat-button (click)="languageService.changeLanguage('de')" class="toolbar-nav-btn">
+      <img src="{{ navImgDe }}" alt="German" style="width: 20px" />
+    </button>
+  } @else {
+    <button mat-button (click)="languageService.changeLanguage('en')" class="toolbar-nav-btn">
+      <img src="{{ navImgEn }}" alt="English" style="width: 20px" />
+    </button>
+  }
+
   <div ngbDropdown class="toolbar-dropdown-wrapper">
     <button mat-button type="button" class="btn" id="togleBtnOfdropdownNav" ngbDropdownToggle>
       Menu
     </button>
     <div ngbDropdownMenu aria-labelledby="dropdownOfNav" class="toolbar-dropdown-menu">
       <button ngbDropdownItem class="toolbar-dropdown-menu-item">
-        <a [routerLink]="navHome" class="toolbar-dropdown-a" routerLinkActive="active">Home</a>
+        <a [routerLink]="navHome" class="toolbar-dropdown-a" routerLinkActive="active">{{
+          'nav.home' | translate
+        }}</a>
       </button>
       <button ngbDropdownItem class="toolbar-dropdown-menu-item">
-        <a [routerLink]="navJourneys" class="toolbar-dropdown-a" routerLinkActive="active"
-          >Journeys</a
+        <a [routerLink]="navJourneys" class="toolbar-dropdown-a" routerLinkActive="active">{{
+          'nav.journeys' | translate
+        }}</a>
+      </button>
+      <button ngbDropdownItem class="toolbar-dropdown-menu-item">
+        <a [routerLink]="navWeatherCheck" class="toolbar-dropdown-a" routerLinkActive="active">
+          {{ 'nav.weather' | translate }}</a
         >
       </button>
       <button ngbDropdownItem class="toolbar-dropdown-menu-item">
-        <a [routerLink]="navWeatherCheck" class="toolbar-dropdown-a" routerLinkActive="active"
-          >Weather</a
-        >
-      </button>
-      <button ngbDropdownItem class="toolbar-dropdown-menu-item">
-        <a [routerLink]="navContact" class="toolbar-dropdown-a" routerLinkActive="active"
-          >Contact</a
-        >
+        <a [routerLink]="navContact" class="toolbar-dropdown-a" routerLinkActive="active">{{
+          'nav.contact' | translate
+        }}</a>
       </button>
       <button
         ngbDropdownItem
@@ -130,6 +144,23 @@
           {{ isDarkMode ? 'light_mode' : 'dark_mode' }}
         </mat-icon>
       </button>
+      @if (languageService.currentLanguage === 'en') {
+        <button
+          ngbDropdownItem
+          (click)="languageService.changeLanguage('de')"
+          class="toolbar-dropdown-menu-item"
+        >
+          <img src="{{ navImgDe }}" alt="German" style="width: 20px" />
+        </button>
+      } @else {
+        <button
+          ngbDropdownItem
+          (click)="languageService.changeLanguage('en')"
+          class="toolbar-dropdown-menu-item"
+        >
+          <img src="{{ navImgEn }}" alt="English" style="width: 20px" />
+        </button>
+      }
     </div>
   </div>
 </mat-toolbar>

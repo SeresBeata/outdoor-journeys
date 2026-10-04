@@ -10,6 +10,8 @@ import {
   NgbDropdownButtonItem
 } from '@ng-bootstrap/ng-bootstrap/dropdown'
 import { RouterLink, RouterLinkActive } from '@angular/router'
+import { TranslatePipe } from '@ngx-translate/core'
+import { LanguageService } from '../../services/language'
 import { environment } from '../../../environments/environment'
 
 @Component({
@@ -23,7 +25,8 @@ import { environment } from '../../../environments/environment'
     NgbDropdownItem,
     NgbDropdownButtonItem,
     RouterLink,
-    RouterLinkActive
+    RouterLinkActive,
+    TranslatePipe
   ],
   selector: 'app-toolbar',
   styleUrl: './toolbar.css',
@@ -34,10 +37,12 @@ export class Toolbar {
   navJourneys = environment.navJourneys
   navWeatherCheck = environment.navWeatherCheck
   navContact = environment.navContact
+  navImgEn = environment.navLangImgEn
+  navImgDe = environment.navLangImgDe
 
   isDarkMode = false
 
-  constructor() {
+  constructor(public languageService: LanguageService) {
     const savedTheme = localStorage.getItem('theme')
     this.isDarkMode = savedTheme === 'dark'
     document.documentElement.classList.toggle('dark-mode', this.isDarkMode)
