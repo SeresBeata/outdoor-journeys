@@ -43,5 +43,12 @@
     "photographer": "Fotograf/in",
     "photographer_url": "Link",
     "btn-text": "Mehr lesen"
+  },
+  "weather": {
+    "city": "Stadt",
+    "city-example": "z.B. Berlin",
+    "btn-text": "Wetter prüfen",
+    "wind": "Wind: ",
+    "humidity": "Luftfeuchtigkeit: "
   }
 }

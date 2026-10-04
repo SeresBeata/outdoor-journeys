@@ -43,5 +43,12 @@
     "photographer": "Photographer",
     "photographer_url": "Link",
     "btn-text": "Read more"
+  },
+  "weather": {
+    "city": "City",
+    "city-example": "e.g. London",
+    "btn-text": "Check the Weather",
+    "wind": "Wind: ",
+    "humidity": "Humidity: "
   }
 }
