@@ -29,5 +29,19 @@
     "carousel": {
       "title": "Finde deine Reise!"
     }
+  },
+  "journeys": {
+    "title": "Finde deine Reise!",
+    "paginator": {
+      "items_per_page": "Einträge pro Seite: ",
+      "next_page": "Nächste Seite",
+      "previous_page": "Vorherige Seite",
+      "first_page": "Erste Seite",
+      "last-page": "Letzte Seite"
+    },
+    "image": "Berg",
+    "photographer": "Fotograf/in",
+    "photographer_url": "Link",
+    "btn-text": "Mehr lesen"
   }
 }

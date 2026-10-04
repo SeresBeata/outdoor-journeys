@@ -29,5 +29,19 @@
     "carousel": {
       "title": "Find your Journey!"
     }
+  },
+  "journeys": {
+    "title": "Find your Journey!",
+    "paginator": {
+      "items_per_page": "Items per page: ",
+      "next_page": "Next page",
+      "previous_page": "Previous page",
+      "first_page": "First page",
+      "last-page": "Last page"
+    },
+    "image": "Mountain",
+    "photographer": "Photographer",
+    "photographer_url": "Link",
+    "btn-text": "Read more"
   }
 }
