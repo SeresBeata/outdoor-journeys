@@ -4,5 +4,30 @@
     "weather": "Wetter",
     "journeys": "Wanderungen",
     "contact": "Kontakt"
+  },
+  "home": {
+    "about": {
+      "weather": {
+        "title": "Gut vorbereitet losgehen",
+        "description": "Informiere dich vor deinem Ausflug über das örtliche Wetter, die Regeln für die Wege und saisonale Zugangsbeschränkungen. Eine gute Vorbereitung hilft dabei, die Ziele des Ausflugs sicher und angenehm zu erreichen und gleichzeitig Schäden an der Natur zu vermeiden. Eine schlechte Planung führt häufig zu einem weniger angenehmen Erlebnis und kann natürliche und kulturelle Ressourcen beeinträchtigen.",
+        "btn-text": "Wetter prüfen"
+      },
+      "trash": {
+        "title": "Nimm deinen Müll mit",
+        "description": "Nimm alles wieder mit, was du mitgebracht hast – auch Essensreste, Verpackungen und Hygieneabfälle."
+      },
+      "wildlife": {
+        "title": "Tierwelt-Respekt",
+        "description": "Halte Abstand zu Tieren, füttere sie nicht und gib ihnen während der Brutzeit besonders viel Raum."
+      },
+      "journey": {
+        "title": "Bleibe auf den Wegen",
+        "description": "Nutze markierte Wege und ausgewiesene Campingplätze, um Natur und Tierwelt zu schützen. Gute Campingplätze werden gefunden, nicht geschaffen.",
+        "btn-text": "Finde deine Reise"
+      }
+    },
+    "carousel": {
+      "title": "Finde deine Reise!"
+    }
   }
 }
