@@ -50,6 +50,14 @@
     font-weight: 600;
   }
 
+  .toolbar-lang-btn img {
+    width: 26px;
+  }
+
+  .toolbar-lang-btn {
+    padding: 0px;
+  }
+
   @media all and (max-width: 768px) {
     .toolbar-text,
     .toolbar-nav-btn {
@@ -58,6 +66,11 @@
 
     .toolbar-dropdown-wrapper {
       display: inline-block;
+    }
+
+    .toolbar-lang-btn {
+      margin-left: 3px;
+      padding-left: 12px;
     }
   }
 </style>
@@ -100,12 +113,20 @@
   </button>
 
   @if (languageService.currentLanguage === 'en') {
-    <button mat-button (click)="languageService.changeLanguage('de')" class="toolbar-nav-btn">
-      <img src="{{ navImgDe }}" alt="German" style="width: 20px" />
+    <button
+      mat-button
+      (click)="languageService.changeLanguage('de')"
+      class="toolbar-nav-btn toolbar-lang-btn"
+    >
+      <img src="{{ navImgDe }}" alt="German" />
     </button>
   } @else {
-    <button mat-button (click)="languageService.changeLanguage('en')" class="toolbar-nav-btn">
-      <img src="{{ navImgEn }}" alt="English" style="width: 20px" />
+    <button
+      mat-button
+      (click)="languageService.changeLanguage('en')"
+      class="toolbar-nav-btn toolbar-lang-btn"
+    >
+      <img src="{{ navImgEn }}" alt="English" />
     </button>
   }
 
@@ -148,17 +169,17 @@
         <button
           ngbDropdownItem
           (click)="languageService.changeLanguage('de')"
-          class="toolbar-dropdown-menu-item"
+          class="toolbar-dropdown-menu-item toolbar-lang-btn"
         >
-          <img src="{{ navImgDe }}" alt="German" style="width: 20px" />
+          <img src="{{ navImgDe }}" alt="German" />
         </button>
       } @else {
         <button
           ngbDropdownItem
           (click)="languageService.changeLanguage('en')"
-          class="toolbar-dropdown-menu-item"
+          class="toolbar-dropdown-menu-item toolbar-lang-btn"
         >
-          <img src="{{ navImgEn }}" alt="English" style="width: 20px" />
+          <img src="{{ navImgEn }}" alt="English" />
         </button>
       }
     </div>
