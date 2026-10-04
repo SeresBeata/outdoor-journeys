@@ -8,6 +8,7 @@ import { FormsModule } from '@angular/forms'
 import { MatInputModule } from '@angular/material/input'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { TranslatePipe } from '@ngx-translate/core'
+import { TranslateService } from '@ngx-translate/core'
 import { environment } from '../../../environments/environment'
 
 interface Weather {
@@ -63,15 +64,17 @@ export class WeatherPage {
   weather = signal<Weather | null>(null)
   img = signal('')
   city = signal('')
-  lang = signal('en')
+
+  constructor(private translate: TranslateService) {}
 
   round(val: number | undefined) {
     return val !== undefined ? Math.round(val) : ''
   }
 
   async getWeather() {
+    const lang = this.translate.currentLang?.() || 'en'
     const apiKey = environment.weatherApiKey
-    const url = `${environment.weatherApiUrl}?q=${this.city()}&units=metric&lang=en&APPID=${apiKey}`
+    const url = `${environment.weatherApiUrl}?q=${this.city()}&units=metric&lang=${lang}&APPID=${apiKey}`
     const imgUrl = environment.weatherImgUrl
 
     try {
