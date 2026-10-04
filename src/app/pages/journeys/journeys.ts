@@ -1,13 +1,15 @@
-import { Component, OnInit, signal } from '@angular/core'
+import { Component, OnInit, signal, Injectable } from '@angular/core'
 import { Toolbar } from '../../components/toolbar/toolbar'
 import { MatTableModule } from '@angular/material/table'
 import { MatPaginatorModule } from '@angular/material/paginator'
 import { MatTableDataSource } from '@angular/material/table'
-import { MatPaginator } from '@angular/material/paginator'
+import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator'
 import { ViewChild } from '@angular/core'
 import { environment } from '../../../environments/environment'
 import { MatIconModule } from '@angular/material/icon'
 import { MatButtonModule } from '@angular/material/button'
+import { TranslatePipe } from '@ngx-translate/core'
+import { TranslateService } from '@ngx-translate/core'
 
 interface Src {
   original: string
@@ -34,8 +36,42 @@ interface Img {
   photos: Photo[]
 }
 
+@Injectable()
+export class CustomPaginatorIntl extends MatPaginatorIntl {
+  constructor(private translate: TranslateService) {
+    super()
+    this.translate.onLangChange.subscribe(() => {
+      this.translateLabels()
+    })
+    this.translateLabels()
+  }
+
+  private translateLabels(): void {
+    this.itemsPerPageLabel = this.translate.instant('journeys.paginator.items_per_page')
+    this.nextPageLabel = this.translate.instant('journeys.paginator.next_page')
+    this.previousPageLabel = this.translate.instant('journeys.paginator.previous_page')
+    this.firstPageLabel = this.translate.instant('journeys.paginator.first_page')
+    this.lastPageLabel = this.translate.instant('journeys.paginator.last_page')
+
+    this.changes.next()
+  }
+}
+
 @Component({
-  imports: [Toolbar, MatTableModule, MatPaginatorModule, MatButtonModule, MatIconModule],
+  imports: [
+    Toolbar,
+    MatTableModule,
+    MatPaginatorModule,
+    MatButtonModule,
+    MatIconModule,
+    TranslatePipe
+  ],
+  providers: [
+    {
+      provide: MatPaginatorIntl,
+      useClass: CustomPaginatorIntl
+    }
+  ],
   selector: 'app-journeys',
   styleUrl: './journeys.css',
   templateUrl: './journeys.html'
