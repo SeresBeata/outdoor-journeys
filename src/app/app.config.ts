@@ -6,11 +6,23 @@ import {
 import { provideRouter } from '@angular/router'
 import { routes } from './app.routes'
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+import { provideHttpClient } from '@angular/common/http'
+import { provideTranslateService } from '@ngx-translate/core'
+import { provideTranslateHttpLoader } from '@ngx-translate/http-loader'
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideRouter(routes),
-    importProvidersFrom(NgbModule)
+    importProvidersFrom(NgbModule),
+    provideHttpClient(),
+    provideTranslateService({
+      lang: 'en',
+      fallbackLang: 'en',
+      loader: provideTranslateHttpLoader({
+        prefix: './assets/i18n/',
+        suffix: '.json'
+      })
+    })
   ]
 }
