@@ -50,5 +50,25 @@
     "btn-text": "Wetter prüfen",
     "wind": "Wind: ",
     "humidity": "Luftfeuchtigkeit: "
+  },
+  "contact": {
+    "title": "Kontakt",
+    "personal-data": "Persönliche Angaben",
+    "name": "Name",
+    "email": "E-Mail-Adresse",
+    "email-short": "E-Mail",
+    "subject": "Betreff",
+    "message": "Nachricht",
+    "next-btn": "Weiter",
+    "previous-btn": "Zurück",
+    "summary": "Zusammenfassung",
+    "summary-text": "Überprüfen Sie Ihre Nachricht",
+    "submit-btn": "Senden",
+    "reset-btn": "Zurücksetzen",
+    "validation-message": {
+      "required": " ist erforderlich",
+      "max-length": "Maximal {{length}} Zeichen",
+      "valid-email": "Bitte geben Sie gültige E-Mail ein"
+    }
   }
 }

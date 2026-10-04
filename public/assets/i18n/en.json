@@ -50,5 +50,25 @@
     "btn-text": "Check the Weather",
     "wind": "Wind: ",
     "humidity": "Humidity: "
+  },
+  "contact": {
+    "title": "Contact",
+    "personal-data": "Personal Information",
+    "name": "Name",
+    "email": "E-mail address",
+    "email-short": "E-mail",
+    "subject": "Subject",
+    "message": "Message",
+    "next-btn": "Next",
+    "previous-btn": "Back",
+    "summary": "Summary",
+    "summary-text": "Review your message",
+    "submit-btn": "Send",
+    "reset-btn": "Reset",
+    "validation-message": {
+      "required": " is required",
+      "max-length": "Maximum {{length}} characters",
+      "valid-email": "Please enter a valid email"
+    }
   }
 }
