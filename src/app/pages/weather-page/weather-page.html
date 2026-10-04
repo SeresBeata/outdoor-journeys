@@ -83,6 +83,9 @@
     align-items: center;
     padding-bottom: 3px;
   }
+  .info-text {
+    margin-right: 3px;
+  }
 </style>
 
 <div>
@@ -90,13 +93,13 @@
   <div class="container form-wrapper">
     <app-weather-animation></app-weather-animation>
     <mat-form-field class="weather-from-field">
-      <mat-label>City</mat-label>
+      <mat-label> {{ 'weather.city' | translate }} </mat-label>
       <input
         matInput
         type="text"
         [ngModel]="city()"
         (ngModelChange)="city.set($event)"
-        placeholder="e.g. London"
+        placeholder="{{ 'weather.city-example' | translate }}"
       />
       @if (city()) {
         <button matSuffix matIconButton aria-label="Clear" (click)="city.set('')">
@@ -104,7 +107,9 @@
         </button>
       }
     </mat-form-field>
-    <button matButton="tonal" (click)="getWeather()" class="weather-btn">Check the Weather</button>
+    <button matButton="tonal" (click)="getWeather()" class="weather-btn">
+      {{ 'weather.btn-text' | translate }}
+    </button>
 
     <div class="weather-wrapper">
       @if (weather()) {
@@ -126,11 +131,13 @@
                 aria-label="humidity_percentage"
                 fontIcon="water_drop"
               ></mat-icon>
-              Humidity: {{ weather()?.main.humidity }}%
+              <span class="info-text">{{ 'weather.humidity' | translate }}</span>
+              {{ weather()?.main.humidity }}%
             </div>
             <div class="info-icon-wrapper">
               <mat-icon aria-hidden="false" aria-label="wind" fontIcon="air"></mat-icon>
-              Wind: {{ weather()?.wind.speed }}m/s
+              <span class="info-text">{{ 'weather.wind' | translate }}</span>
+              {{ weather()?.wind.speed }}m/s
             </div>
           </div>
         </div>

@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button'
 import { FormsModule } from '@angular/forms'
 import { MatInputModule } from '@angular/material/input'
 import { MatFormFieldModule } from '@angular/material/form-field'
+import { TranslatePipe } from '@ngx-translate/core'
 import { environment } from '../../../environments/environment'
 
 interface Weather {
@@ -50,7 +51,8 @@ interface Wind {
     MatButtonModule,
     MatIconModule,
     WeatherAnimation,
-    ArrowAnimation
+    ArrowAnimation,
+    TranslatePipe
   ],
 
   selector: 'app-weather-page',
