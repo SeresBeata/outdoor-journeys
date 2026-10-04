@@ -81,7 +81,7 @@
   @for (img of images; track img; let i = $index) {
     <ng-template ngbSlide>
       <div class="carousel-caption">
-        <h3>{{ img.text }}</h3>
+        <h3>{{ img.text | translate }}</h3>
       </div>
       <a [href]="img.link" target="_blank" rel="nofollow noopener noreferrer">
         <div class="picsum-img-wrapper">
